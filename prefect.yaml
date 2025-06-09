@@ -5,14 +5,14 @@ name: pestroutes-pipeline
 prefect-version: 3.4.5
 
 # Build configuration
-# build:
-#   - prefect_docker.deployments.steps.build_docker_image:
-#       id: build-image
-#       requires: prefect-docker>=0.3.0
-#       image_name: pestroutes-pipeline
-#       tag: latest
-#       dockerfile: auto
-#       platform: "linux/amd64"
+build:
+  - prefect_docker.deployments.steps.build_docker_image:
+      id: build-image
+      requires: prefect-docker>=0.3.0
+      image_name: pestroutes-pipeline
+      tag: latest
+      dockerfile: auto
+      platform: "linux/amd64"
 
 # Deployment definitions
 deployments:
