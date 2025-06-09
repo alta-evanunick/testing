@@ -21,9 +21,10 @@ deployments:
     entrypoint: flows/main_pipeline.py:pestroutes_full_pipeline
     
     parameters:
-      # Date range for data extraction (defaults to yesterday)
-      start_date: "{{ (now('UTC') - timedelta(days=1)).strftime('%Y-%m-%d') }}"
-      end_date: "{{ now('UTC').strftime('%Y-%m-%d') }}"
+      # Date range for data extraction (defaults to yesterday Pacific Time)
+      # PestRoutes API expects dates in Pacific Time
+      start_date: "{{ (now('America/Los_Angeles') - timedelta(days=1)).strftime('%Y-%m-%d') }}"
+      end_date: "{{ now('America/Los_Angeles').strftime('%Y-%m-%d') }}"
       
       # Processing options
       batch_size: 5000
