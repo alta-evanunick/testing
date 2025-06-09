@@ -1,7 +1,7 @@
 # PestRoutes to Snowflake Pipeline Dependencies
 
 # Prefect and related packages
-prefect>=2.14.0
+prefect>=3.4.5
 prefect-docker>=0.3.0
 prefect-snowflake>=0.26.0
 

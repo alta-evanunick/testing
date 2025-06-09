@@ -133,7 +133,7 @@ def setup_work_pool():
     
     # Create default work pool if it doesn't exist
     if run_command(
-        "prefect work-pool create default-agent-pool --type process", 
+        "prefect work-pool create default-work-pool --type process", 
         "Creating default work pool"
     ):
         print("✅ Work pool created/confirmed")
@@ -141,7 +141,7 @@ def setup_work_pool():
     else:
         # Pool might already exist, check
         result = subprocess.run(
-            "prefect work-pool ls | grep default-agent-pool", 
+            "prefect work-pool ls | grep default-work-pool", 
             shell=True, 
             capture_output=True
         )
@@ -187,7 +187,7 @@ def main():
     
     print("\n🎮 Next steps:")
     print("   1. View deployments: prefect deployment ls")
-    print("   2. Start a worker: prefect worker start --pool default-agent-pool")
+    print("   2. Start a worker: prefect worker start --pool default-work-pool")
     print("   3. Trigger a run: prefect deployment run <deployment-name>")
     print("   4. Monitor in Prefect UI: https://app.prefect.cloud")
     

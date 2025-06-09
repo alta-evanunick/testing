@@ -2,17 +2,17 @@
 # PestRoutes to Snowflake Data Pipeline
 
 name: pestroutes-pipeline
-prefect-version: 2.14.0
+prefect-version: 3.4.5
 
 # Build configuration
-build:
-  - prefect_docker.deployments.steps.build_docker_image:
-      id: build-image
-      requires: prefect-docker>=0.3.0
-      image_name: pestroutes-pipeline
-      tag: latest
-      dockerfile: auto
-      platform: "linux/amd64"
+# build:
+#   - prefect_docker.deployments.steps.build_docker_image:
+#       id: build-image
+#       requires: prefect-docker>=0.3.0
+#       image_name: pestroutes-pipeline
+#       tag: latest
+#       dockerfile: auto
+#       platform: "linux/amd64"
 
 # Deployment definitions
 deployments:
@@ -47,12 +47,12 @@ deployments:
       offices_to_process: []
 
     work_pool:
-      name: default-agent-pool
+      name: default-work-pool
       
     schedule:
       # Run daily at 2 AM UTC
       cron: "0 2 * * *"
-      timezone: "UTC"
+      timezone: "America/Denver"
 
   # Incremental pipeline deployment - processes only recent data
   - name: pestroutes-incremental
@@ -75,12 +75,12 @@ deployments:
       run_staging: true
 
     work_pool:
-      name: default-agent-pool
+      name: default-work-pool
       
     schedule:
       # Run every 4 hours
       cron: "0 */4 * * *"
-      timezone: "UTC"
+      timezone: "America/Denver"
 
   # Single entity deployment - for testing or specific entity runs
   - name: pestroutes-single-entity
@@ -102,7 +102,7 @@ deployments:
       run_staging: true
 
     work_pool:
-      name: default-agent-pool
+      name: default-work-pool
 
 # Pull configuration for retrieving code
 pull:
