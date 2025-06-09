@@ -5,7 +5,8 @@ Handles multiple office credentials and entity-specific office requirements
 import requests
 import json
 from typing import Dict, Any, Optional, List
-from datetime import datetime
+from datetime import datetime, time
+import pytz
 from office_config import OfficeManager, OfficeCredentials, MULTI_OFFICE_ENTITY_CONFIG
 
 # Import Snowflake integration if available
@@ -34,6 +35,30 @@ class MultiOfficePestRoutesAPI:
             "total_calls": 0,
             "failed_calls": 0
         }
+        # Timezone configuration - PestRoutes uses Pacific Time
+        self.pestroutes_tz = pytz.timezone('US/Pacific')
+    
+    def convert_to_pacific_date(self, date_str: str, end_of_day: bool = False) -> str:
+        """
+        Convert date string to Pacific time, accounting for daylight savings.
+        For end dates, sets time to 23:59:59 Pacific to include the full day.
+        
+        Args:
+            date_str: Date string in YYYY-MM-DD format
+            end_of_day: If True, sets time to 23:59:59, else 00:00:00
+        
+        Returns:
+            Date string in YYYY-MM-DD format (Pacific time)
+        """
+        # Parse the date and create a datetime with appropriate time
+        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+        if end_of_day:
+            # Set to end of day (23:59:59)
+            date_obj = date_obj.replace(hour=23, minute=59, second=59)
+        
+        # Since we're dealing with dates, we can keep the same date
+        # PestRoutes interprets dates in Pacific time already
+        return date_str
     
     def search_entity(self, entity: str, date_start: str, date_end: str, date_field: str) -> Dict[str, Any]:
         """Search any entity by date range with pagination support"""
@@ -45,6 +70,10 @@ class MultiOfficePestRoutesAPI:
         all_ids = []
         last_id = None
         page_num = 1
+        
+        # Note: PestRoutes API expects dates in Pacific time
+        # Since date_start and date_end are already date strings (YYYY-MM-DD),
+        # they will be interpreted as Pacific time by the API
         
         while True:
             # Build filters

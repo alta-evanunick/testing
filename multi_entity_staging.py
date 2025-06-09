@@ -7,6 +7,11 @@ from datetime import datetime
 from snowflake_integration import SnowflakeConnector
 
 
+# Helper function to generate Pacific to UTC timestamp conversion
+def pacific_to_utc_timestamp(field_name: str) -> str:
+    """Generate SQL to convert Pacific time string to UTC timestamp"""
+    return f"STAGING_DB_DEV.FIELDROUTES.PACIFIC_TO_UTC(RAW_JSON:{field_name}::STRING)"
+
 # Staging table configurations for each entity
 STAGING_CONFIG = {
     "disbursementItem": {
@@ -18,8 +23,8 @@ STAGING_CONFIG = {
             "GATEWAY_DISBURSEMENT_ENTRY_ID": "RAW_JSON:gatewayDisbursementEntryID::NUMBER",
             "GATEWAY_DISBURSEMENT_ID": "RAW_JSON:gatewayDisbursementID::NUMBER",
             "GATEWAY_EVENT_ID": "RAW_JSON:gatewayEventID::NUMBER",
-            "DATE_CREATED": "TO_TIMESTAMP_NTZ(RAW_JSON:dateCreated::STRING)",
-            "DATE_UPDATED": "TO_TIMESTAMP_NTZ(RAW_JSON:dateUpdated::STRING)",
+            "DATE_CREATED": pacific_to_utc_timestamp("dateCreated"),
+            "DATE_UPDATED": pacific_to_utc_timestamp("dateUpdated"),
             "BILLING_FIRST_NAME": "RAW_JSON:billingFirstName::STRING",
             "BILLING_LAST_NAME": "RAW_JSON:billingLastName::STRING",
             "AMOUNT": "RAW_JSON:amount::NUMBER(10,2)",
@@ -88,9 +93,9 @@ STAGING_CONFIG = {
             "SERVICE_CITY": "RAW_JSON:serviceCity::STRING",
             "SERVICE_STATE": "RAW_JSON:serviceState::STRING",
             "SERVICE_ZIP": "RAW_JSON:serviceZip::STRING",
-            "DATE_ADDED": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:dateAdded::STRING, '0000-00-00 00:00:00'))",
-            "DATE_UPDATED": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:dateUpdated::STRING, '0000-00-00 00:00:00'))",
-            "DATE_CANCELLED": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:dateCancelled::STRING, '0000-00-00 00:00:00'))",
+            "DATE_ADDED": pacific_to_utc_timestamp("dateAdded"),
+            "DATE_UPDATED": pacific_to_utc_timestamp("dateUpdated"),
+            "DATE_CANCELLED": pacific_to_utc_timestamp("dateCancelled"),
             "STATUS": "RAW_JSON:status::STRING",
             "CUSTOMER_LINK": "RAW_JSON:customerLink::STRING",
             "BALANCE": "RAW_JSON:balance::NUMBER(10,2)",
@@ -185,10 +190,10 @@ STAGING_CONFIG = {
             "NOTES": "RAW_JSON:notes::STRING",
             "OFFICE_NOTES": "RAW_JSON:officeNotes::STRING",
             "APPOINTMENT_NOTES": "RAW_JSON:appointmentNotes::STRING",
-            "TIME_IN": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:timeIn::STRING, '0000-00-00 00:00:00'))",
-            "TIME_OUT": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:timeOut::STRING, '0000-00-00 00:00:00'))",
-            "CHECK_IN": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:checkIn::STRING, '0000-00-00 00:00:00'))",
-            "CHECK_OUT": "TRY_TO_TIMESTAMP_NTZ(NULLIF(RAW_JSON:checkOut::STRING, '0000-00-00 00:00:00'))",
+            "TIME_IN": pacific_to_utc_timestamp("timeIn"),
+            "TIME_OUT": pacific_to_utc_timestamp("timeOut"),
+            "CHECK_IN": pacific_to_utc_timestamp("checkIn"),
+            "CHECK_OUT": pacific_to_utc_timestamp("checkOut"),
             "WIND_SPEED": "RAW_JSON:windSpeed::NUMBER",
             "WIND_DIRECTION": "RAW_JSON:windDirection::STRING",
             "TEMPERATURE": "RAW_JSON:temperature::NUMBER(5,2)",
@@ -1693,6 +1698,40 @@ class MultiEntityStagingProcessor:
         self.raw_database = raw_database
         self.staging_database = staging_database
         self.schema = schema
+        
+        # Create timezone conversion UDF if not exists
+        self._create_timezone_conversion_udf()
+    
+    def _create_timezone_conversion_udf(self) -> bool:
+        """Create a UDF to convert Pacific Time timestamps to UTC"""
+        try:
+            # Create UDF that converts Pacific time string to UTC timestamp
+            udf_sql = f"""
+            CREATE OR REPLACE FUNCTION {self.staging_database}.{self.schema}.PACIFIC_TO_UTC(pacific_time_str STRING)
+            RETURNS TIMESTAMP_NTZ
+            LANGUAGE SQL
+            AS
+            $$
+            -- Handle null/empty values
+            CASE 
+                WHEN pacific_time_str IS NULL OR pacific_time_str = '' OR pacific_time_str = '0000-00-00 00:00:00' THEN NULL
+                ELSE 
+                    -- Convert Pacific time to UTC
+                    -- PestRoutes timestamps are in Pacific time, need to convert to UTC
+                    CONVERT_TIMEZONE('America/Los_Angeles', 'UTC', TRY_TO_TIMESTAMP_NTZ(pacific_time_str))
+            END
+            $$;
+            """
+            
+            self.snowflake.cursor.execute(udf_sql)
+            print("✅ Created timezone conversion UDF: PACIFIC_TO_UTC")
+            return True
+            
+        except Exception as e:
+            # UDF might already exist, that's okay
+            if "already exists" not in str(e).lower():
+                print(f"⚠️  Warning creating UDF: {e}")
+            return True
     
     def create_staging_schema(self) -> bool:
         """Create staging schema if it doesn't exist"""
