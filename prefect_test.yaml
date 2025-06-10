@@ -1,9 +1,0 @@
-# Test Prefect Deployment 
-name: test-deployment
-prefect-version: 3.4.5
-
-deployments:
-  - name: simple-test
-    entrypoint: test_simple_flow.py:simple_test
-    work_pool:
-      name: default-work-pool

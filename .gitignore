@@ -199,3 +199,6 @@ debug_*.py
 compare_*.py
 .env.test
 .env.local
+
+# Archive directory for old/unused configs
+archive/
