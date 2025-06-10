@@ -96,8 +96,8 @@ async def load_credentials() -> Dict[str, Any]:
             "user": os.getenv("SNOWFLAKE_USER", "EVANUNICK"),
             "password": os.getenv("SNOWFLAKE_PASSWORD", "SnowflakePword1!"),
             "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS"),
-            "database": os.getenv("SNOWFLAKE_DATABASE"),
-            "schema": os.getenv("SNOWFLAKE_SCHEMA")
+            "database": os.getenv("SNOWFLAKE_DATABASE", "RAW_DB_DEV"),
+            "schema": os.getenv("SNOWFLAKE_SCHEMA", "FIELDROUTES")
         }
     
     # Always try to load office credentials from environment if not loaded from blocks
@@ -162,9 +162,8 @@ async def process_entity_for_offices(
         # Global entities: use first available office
         target_offices = [available_offices[0]]
     
-    # Create office manager and populate it with credentials from pipeline
-    office_manager = OfficeManager()
-    office_manager.offices = {}  # Clear any auto-loaded credentials
+    # Create office manager without loading from environment (to avoid warnings)
+    office_manager = OfficeManager(load_from_env=False)
     
     # Populate office manager with credentials from pipeline
     for office_id, office_creds in credentials["offices"].items():
@@ -227,14 +226,15 @@ async def run_staging_transformation(
     logger = get_run_logger()
     logger.info(f"Running staging transformation for {len(entities)} entities")
     
-    # Initialize Snowflake connection
+    # Initialize Snowflake connection for STAGING
     snowflake_config = credentials["snowflake"]
     snowflake_conn = CustomSnowflakeConnector(
         account=snowflake_config["account"],
         user=snowflake_config["user"],
         password=snowflake_config["password"],
         warehouse=snowflake_config["warehouse"],
-        schema=snowflake_config["schema"]
+        database="STAGING_DB_DEV",  # Use staging database for transformations
+        schema="FIELDROUTES"
     )
     
     if not snowflake_conn.connect():

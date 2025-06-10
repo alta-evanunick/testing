@@ -19,9 +19,10 @@ class OfficeCredentials:
 class OfficeManager:
     """Manages multiple office credentials and determines which entities need multi-office processing"""
     
-    def __init__(self):
+    def __init__(self, load_from_env: bool = True):
         self.offices = {}
-        self._load_office_credentials()
+        if load_from_env:
+            self._load_office_credentials()
     
     def _load_office_credentials(self):
         """Load office credentials from environment variables"""
