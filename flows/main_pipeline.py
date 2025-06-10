@@ -13,11 +13,11 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from prefect import flow, task, get_run_logger
 from prefect.blocks.system import Secret
 from prefect.blocks.core import Block
-from prefect_snowflake.database import SnowflakeConnector
+from prefect_snowflake.database import SnowflakeConnector as PrefectSnowflakeConnector
 
 from office_config import MULTI_OFFICE_ENTITY_CONFIG, get_entities_requiring_multi_office, get_global_entities, OfficeManager, OfficeCredentials
 from multi_office_api import MultiOfficePestRoutesAPI, MultiOfficeEntityTask
-from snowflake_integration import SnowflakeConnector
+from snowflake_integration import SnowflakeConnector as CustomSnowflakeConnector
 from multi_entity_staging import MultiEntityStagingProcessor
 
 
@@ -34,7 +34,7 @@ async def load_credentials() -> Dict[str, Any]:
     try:
         # Try Prefect secret blocks (for Prefect Cloud deployment)
         logger.info("Attempting to load from Prefect secret blocks...")
-        prefect_snowflake_connector = await SnowflakeConnector.load("snowflake-altapestdb")
+        prefect_snowflake_connector = await PrefectSnowflakeConnector.load("snowflake-altapestdb")
         
         snowflake_config = {
             "account": prefect_snowflake_connector.credentials.account,
@@ -99,8 +99,10 @@ async def load_credentials() -> Dict[str, Any]:
             "database": os.getenv("SNOWFLAKE_DATABASE"),
             "schema": os.getenv("SNOWFLAKE_SCHEMA")
         }
-        
-        # Load office credentials from environment
+    
+    # Always try to load office credentials from environment if not loaded from blocks
+    if not office_credentials:
+        logger.info("Loading office credentials from environment variables...")
         for i in range(1, 20):  # offices 1-19
             api_key = os.getenv(f"PESTROUTES_OFFICE_{i}_API_KEY")
             token = os.getenv(f"PESTROUTES_OFFICE_{i}_TOKEN")
@@ -160,8 +162,18 @@ async def process_entity_for_offices(
         # Global entities: use first available office
         target_offices = [available_offices[0]]
     
-    # Create office manager (it loads credentials from environment variables automatically)
+    # Create office manager and populate it with credentials from pipeline
     office_manager = OfficeManager()
+    office_manager.offices = {}  # Clear any auto-loaded credentials
+    
+    # Populate office manager with credentials from pipeline
+    for office_id, office_creds in credentials["offices"].items():
+        office_manager.offices[office_id] = OfficeCredentials(
+            office_id=office_id,
+            office_name=office_creds["office_name"],
+            api_key=office_creds["api_key"],
+            token=office_creds["token"]
+        )
     
     # Create Snowflake configuration for the pipeline
     snowflake_config = credentials["snowflake"]
@@ -217,7 +229,7 @@ async def run_staging_transformation(
     
     # Initialize Snowflake connection
     snowflake_config = credentials["snowflake"]
-    snowflake_conn = SnowflakeConnector(
+    snowflake_conn = CustomSnowflakeConnector(
         account=snowflake_config["account"],
         user=snowflake_config["user"],
         password=snowflake_config["password"],

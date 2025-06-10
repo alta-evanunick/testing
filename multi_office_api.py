@@ -24,7 +24,8 @@ class MultiOfficePestRoutesAPI:
     def __init__(self, office_credentials: OfficeCredentials):
         self.office = office_credentials
         self.base_url = "https://alta.pestroutes.com/api"
-        self.headers = {
+        # Authentication should be in headers, not params
+        self.auth_headers = {
             "authenticationToken": self.office.token,
             "authenticationKey": self.office.api_key,
         }
@@ -36,7 +37,7 @@ class MultiOfficePestRoutesAPI:
             "failed_calls": 0
         }
         # Timezone configuration - PestRoutes uses Pacific Time
-        self.pestroutes_tz = pytz.timezone('US/Pacific')
+        self.pestroutes_tz = pytz.timezone('America/Los_Angeles')
     
     def convert_to_pacific_date(self, date_str: str, end_of_day: bool = False) -> str:
         """
@@ -91,7 +92,7 @@ class MultiOfficePestRoutesAPI:
                     "value": last_id
                 }
             
-            params = {}
+            params = {}  # Don't include authentication in params
             for key, value in filters.items():
                 params[key] = json.dumps(value)
             
@@ -101,7 +102,7 @@ class MultiOfficePestRoutesAPI:
                 print(f"[{self.office.office_id}] Searching {entity} - Page {page_num} (after ID: {last_id})...")
                 self.api_call_stats["search_calls"] += 1
                 self.api_call_stats["total_calls"] += 1
-                response = requests.get(url, headers=self.headers, params=params)
+                response = requests.get(url, headers=self.auth_headers, params=params)
                 response.raise_for_status()
                 result = response.json()
                 
@@ -164,7 +165,9 @@ class MultiOfficePestRoutesAPI:
                 print(f"  [{self.office.office_id}] Fetching {entity} batch {batch_num}/{total_batches} ({len(batch_ids)} IDs)...")
                 self.api_call_stats["get_calls"] += 1
                 self.api_call_stats["total_calls"] += 1
-                response = requests.post(url, headers=self.headers, json=data)
+                # For POST requests, we need to include auth in the body or params
+                # Let's try with params first
+                response = requests.post(url, params={"authenticationToken": self.office.token, "authenticationKey": self.office.api_key}, json=data)
                 response.raise_for_status()
                 result = response.json()
                 
