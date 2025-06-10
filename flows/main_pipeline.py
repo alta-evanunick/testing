@@ -6,6 +6,7 @@ import os
 import sys
 from datetime import datetime, timedelta
 from typing import List, Optional, Dict, Any
+import pytz
 
 # Add parent directory to path for imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -305,7 +306,21 @@ async def pestroutes_full_pipeline(
     """
     logger = get_run_logger()
     logger.info(f"🚀 Starting PestRoutes Full Pipeline")
-    logger.info(f"📅 Date range: {start_date} to {end_date}")
+    
+    # Handle template strings or AUTO from Prefect deployment
+    if "{{" in str(start_date) or "{{" in str(end_date) or str(start_date).upper() == "AUTO" or str(end_date).upper() == "AUTO":
+        # If dates contain template strings or AUTO, use yesterday's date
+        pacific_tz = pytz.timezone('America/Los_Angeles')
+        now_pacific = datetime.now(pacific_tz)
+        yesterday_pacific = now_pacific - timedelta(days=1)
+        
+        # Use yesterday for both start and end date to get complete day's data
+        start_date = yesterday_pacific.strftime('%Y-%m-%d')
+        end_date = yesterday_pacific.strftime('%Y-%m-%d')
+        
+        logger.info(f"📅 Auto-resolved dates to: {start_date} to {end_date} (Pacific Time)")
+    else:
+        logger.info(f"📅 Date range: {start_date} to {end_date}")
     
     # Load credentials
     credentials = await load_credentials()
@@ -429,6 +444,19 @@ async def pestroutes_single_entity_pipeline(
     """
     logger = get_run_logger()
     logger.info(f"🎯 Starting Single Entity Pipeline for: {entity}")
+    
+    # Handle template strings or AUTO from Prefect deployment
+    if "{{" in str(start_date) or "{{" in str(end_date) or str(start_date).upper() == "AUTO" or str(end_date).upper() == "AUTO":
+        # If dates contain template strings or AUTO, use yesterday's date
+        pacific_tz = pytz.timezone('America/Los_Angeles')
+        now_pacific = datetime.now(pacific_tz)
+        yesterday_pacific = now_pacific - timedelta(days=1)
+        
+        # Use yesterday for both start and end date to get complete day's data
+        start_date = yesterday_pacific.strftime('%Y-%m-%d')
+        end_date = yesterday_pacific.strftime('%Y-%m-%d')
+        
+        logger.info(f"📅 Auto-resolved dates to: {start_date} to {end_date} (Pacific Time)")
     
     # Run full pipeline with single entity
     return await pestroutes_full_pipeline(

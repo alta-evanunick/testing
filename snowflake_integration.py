@@ -110,21 +110,25 @@ class SnowflakeConnector:
         """
         
         try:
-            # Format values for bulk insert
-            values_list = []
-            for json_str, source, batch in data_to_insert:
-                # Escape single quotes in JSON and handle special characters
-                escaped_json = json_str.replace("'", "''").replace("\\", "\\\\")
-                # Handle potential null bytes and other problematic characters
-                escaped_json = escaped_json.replace("\x00", "").replace("\r", "\\r").replace("\n", "\\n")
-                values_list.append(f"('{escaped_json}', '{source}', '{batch}')")
+            # Use parameterized query for safe JSON insertion
+            insert_sql_param = f"""
+            INSERT INTO {self.database}.{self.schema}.{table_name} 
+            (RAW_JSON, SOURCE_FILE, BATCH_ID)
+            VALUES (PARSE_JSON(%s), %s, %s)
+            """
             
-            values_clause = ", ".join(values_list)
-            final_sql = insert_sql % values_clause
+            # Prepare data for executemany
+            param_data = []
+            for record in json_records:
+                param_data.append((
+                    json.dumps(record),  # JSON string
+                    source_file,         # SOURCE_FILE
+                    batch_id            # BATCH_ID
+                ))
             
-            # Execute bulk insert
-            self.cursor.execute(final_sql)
-            inserted_count = len(data_to_insert)
+            # Execute bulk insert using parameterized queries
+            self.cursor.executemany(insert_sql_param, param_data)
+            inserted_count = len(param_data)
             print(f"Inserted {inserted_count} records into {table_name}")
             return inserted_count
         except Exception as e:
