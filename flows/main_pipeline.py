@@ -71,13 +71,13 @@ async def load_credentials() -> Dict[str, Any]:
         # Load PestRoutes API credentials for each office
         for office_id, office_name in office_mappings.items():
             try:
-                # Load secrets using Prefect 3.x block system
-                api_key_block = await Block.load(f"fieldroutes-{office_name}-auth-key")
-                token_block = await Block.load(f"fieldroutes-{office_name}-auth-token")
+                # Load secrets using Prefect 3.x Secret blocks
+                api_key_block = await Secret.load(f"fieldroutes-{office_name}-auth-key")
+                token_block = await Secret.load(f"fieldroutes-{office_name}-auth-token")
                 
                 office_credentials[office_id] = {
-                    "api_key": api_key_block.value,
-                    "token": token_block.value,
+                    "api_key": api_key_block.get(),
+                    "token": token_block.get(),
                     "office_name": office_name.replace("_", " ").title()
                 }
                 logger.info(f"✅ Loaded credentials for {office_name}")
