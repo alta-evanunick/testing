@@ -12,6 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from prefect import flow, task, get_run_logger
 from prefect.blocks.system import Secret
+from prefect.blocks.core import Block
 from prefect_snowflake.database import SnowflakeConnector
 
 from office_config import MULTI_OFFICE_ENTITY_CONFIG, get_entities_requiring_multi_office, get_global_entities, OfficeManager, OfficeCredentials
@@ -33,15 +34,15 @@ async def load_credentials() -> Dict[str, Any]:
     try:
         # Try Prefect secret blocks (for Prefect Cloud deployment)
         logger.info("Attempting to load from Prefect secret blocks...")
-        snowflake_connector = await SnowflakeConnector.load("snowflake-altapestdb")
+        prefect_snowflake_connector = await SnowflakeConnector.load("snowflake-altapestdb")
         
         snowflake_config = {
-            "account": snowflake_connector.credentials.account,
-            "user": snowflake_connector.credentials.user,
-            "password": snowflake_connector.credentials.password.get_secret_value(),
-            "warehouse": getattr(snowflake_connector.credentials, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
-            "database": getattr(snowflake_connector, 'database', None),
-            "schema": getattr(snowflake_connector, 'schema_', None)
+            "account": prefect_snowflake_connector.credentials.account,
+            "user": prefect_snowflake_connector.credentials.user,
+            "password": prefect_snowflake_connector.credentials.password.get_secret_value(),
+            "warehouse": getattr(prefect_snowflake_connector.credentials, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
+            "database": getattr(prefect_snowflake_connector, 'database', None),
+            "schema": getattr(prefect_snowflake_connector, 'schema_', None)
         }
         
         logger.info("✅ Loaded Snowflake credentials from secret blocks")
@@ -70,12 +71,13 @@ async def load_credentials() -> Dict[str, Any]:
         # Load PestRoutes API credentials for each office
         for office_id, office_name in office_mappings.items():
             try:
-                api_key_secret = await Secret.load(f"fieldroutes-{office_name}-auth-key")
-                token_secret = await Secret.load(f"fieldroutes-{office_name}-auth-token")
+                # Load secrets using Prefect 3.x block system
+                api_key_block = await Block.load(f"fieldroutes-{office_name}-auth-key")
+                token_block = await Block.load(f"fieldroutes-{office_name}-auth-token")
                 
                 office_credentials[office_id] = {
-                    "api_key": api_key_secret.get(),
-                    "token": token_secret.get(),
+                    "api_key": api_key_block.value,
+                    "token": token_block.value,
                     "office_name": office_name.replace("_", " ").title()
                 }
                 logger.info(f"✅ Loaded credentials for {office_name}")
@@ -219,7 +221,8 @@ async def run_staging_transformation(
         account=snowflake_config["account"],
         user=snowflake_config["user"],
         password=snowflake_config["password"],
-        warehouse=snowflake_config["warehouse"]
+        warehouse=snowflake_config["warehouse"],
+        schema=snowflake_config["schema"]
     )
     
     if not snowflake_conn.connect():
