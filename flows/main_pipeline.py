@@ -12,7 +12,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from prefect import flow, task, get_run_logger
 from prefect.blocks.system import Secret
-from prefect_snowflake import SnowflakeCredentials
+from prefect_snowflake.database import SnowflakeConnector
 
 from office_config import MULTI_OFFICE_ENTITY_CONFIG, get_entities_requiring_multi_office, get_global_entities, OfficeManager, OfficeCredentials
 from multi_office_api import MultiOfficePestRoutesAPI, MultiOfficeEntityTask
@@ -33,15 +33,15 @@ async def load_credentials() -> Dict[str, Any]:
     try:
         # Try Prefect secret blocks (for Prefect Cloud deployment)
         logger.info("Attempting to load from Prefect secret blocks...")
-        snowflake_creds = await SnowflakeCredentials.load("snowflake-altapestdb")
+        snowflake_connector = await SnowflakeConnector.load("snowflake-altapestdb")
         
         snowflake_config = {
-            "account": snowflake_creds.account,
-            "user": snowflake_creds.user,
-            "password": snowflake_creds.password.get_secret_value(),
-            "warehouse": getattr(snowflake_creds, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
-            "database": getattr(snowflake_creds, 'database', None),
-            "schema": getattr(snowflake_creds, 'schema_', None)
+            "account": snowflake_connector.credentials.account,
+            "user": snowflake_connector.credentials.user,
+            "password": snowflake_connector.credentials.password.get_secret_value(),
+            "warehouse": getattr(snowflake_connector.credentials, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
+            "database": getattr(snowflake_connector, 'database', None),
+            "schema": getattr(snowflake_connector, 'schema_', None)
         }
         
         logger.info("✅ Loaded Snowflake credentials from secret blocks")
