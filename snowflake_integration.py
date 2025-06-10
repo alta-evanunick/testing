@@ -117,14 +117,20 @@ class SnowflakeConnector:
             VALUES (PARSE_JSON(%s), %s, %s)
             """
             
-            # Prepare data for executemany
+            # Prepare data for executemany with proper JSON formatting
             param_data = []
             for record in json_records:
-                param_data.append((
-                    json.dumps(record),  # JSON string
-                    source_file,         # SOURCE_FILE
-                    batch_id            # BATCH_ID
-                ))
+                try:
+                    # Use compact JSON serialization with ASCII escaping for Snowflake compatibility
+                    json_str = json.dumps(record, ensure_ascii=True, separators=(',', ':'))
+                    param_data.append((
+                        json_str,        # JSON string
+                        source_file,     # SOURCE_FILE
+                        batch_id        # BATCH_ID
+                    ))
+                except (TypeError, ValueError) as e:
+                    print(f"Skipping invalid JSON record: {e}")
+                    continue
             
             # Execute bulk insert using parameterized queries
             self.cursor.executemany(insert_sql_param, param_data)

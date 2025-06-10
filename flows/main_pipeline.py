@@ -160,8 +160,11 @@ async def process_entity_for_offices(
     if requires_multi_office:
         target_offices = office_ids or available_offices
     else:
-        # Global entities: use first available office
-        target_offices = [available_offices[0]]
+        # Global entities: prefer office_1, fallback to first available
+        if "office_1" in available_offices:
+            target_offices = ["office_1"]
+        else:
+            target_offices = [available_offices[0]]
     
     # Create office manager without loading from environment (to avoid warnings)
     office_manager = OfficeManager(load_from_env=False)
@@ -309,14 +312,13 @@ async def pestroutes_full_pipeline(
     
     # Handle template strings or AUTO from Prefect deployment
     if "{{" in str(start_date) or "{{" in str(end_date) or str(start_date).upper() == "AUTO" or str(end_date).upper() == "AUTO":
-        # If dates contain template strings or AUTO, use yesterday's date
+        # Use last 3 days to capture recent data
         pacific_tz = pytz.timezone('America/Los_Angeles')
         now_pacific = datetime.now(pacific_tz)
-        yesterday_pacific = now_pacific - timedelta(days=1)
         
-        # Use yesterday for both start and end date to get complete day's data
-        start_date = yesterday_pacific.strftime('%Y-%m-%d')
-        end_date = yesterday_pacific.strftime('%Y-%m-%d')
+        # Start 3 days ago, end yesterday
+        start_date = (now_pacific - timedelta(days=3)).strftime('%Y-%m-%d')
+        end_date = (now_pacific - timedelta(days=1)).strftime('%Y-%m-%d')
         
         logger.info(f"📅 Auto-resolved dates to: {start_date} to {end_date} (Pacific Time)")
     else:
@@ -447,14 +449,13 @@ async def pestroutes_single_entity_pipeline(
     
     # Handle template strings or AUTO from Prefect deployment
     if "{{" in str(start_date) or "{{" in str(end_date) or str(start_date).upper() == "AUTO" or str(end_date).upper() == "AUTO":
-        # If dates contain template strings or AUTO, use yesterday's date
+        # Use last 3 days to capture recent data
         pacific_tz = pytz.timezone('America/Los_Angeles')
         now_pacific = datetime.now(pacific_tz)
-        yesterday_pacific = now_pacific - timedelta(days=1)
         
-        # Use yesterday for both start and end date to get complete day's data
-        start_date = yesterday_pacific.strftime('%Y-%m-%d')
-        end_date = yesterday_pacific.strftime('%Y-%m-%d')
+        # Start 3 days ago, end yesterday
+        start_date = (now_pacific - timedelta(days=3)).strftime('%Y-%m-%d')
+        end_date = (now_pacific - timedelta(days=1)).strftime('%Y-%m-%d')
         
         logger.info(f"📅 Auto-resolved dates to: {start_date} to {end_date} (Pacific Time)")
     
