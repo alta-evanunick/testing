@@ -41,8 +41,8 @@ async def load_credentials() -> Dict[str, Any]:
             "user": prefect_snowflake_connector.credentials.user,
             "password": prefect_snowflake_connector.credentials.password.get_secret_value(),
             "warehouse": getattr(prefect_snowflake_connector.credentials, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
-            "database": getattr(prefect_snowflake_connector, 'database', "RAW_DB_DEV"),
-            "schema": getattr(prefect_snowflake_connector, 'schema_', "FIELDROUTES")
+            "database": "RAW_DB_DEV",  # Force correct database
+            "schema": "FIELDROUTES"    # Force correct schema
         }
         
         logger.info("✅ Loaded Snowflake credentials from secret blocks")

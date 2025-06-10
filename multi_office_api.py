@@ -239,14 +239,14 @@ class MultiOfficeEntityTask:
         if not offices:
             return {"success": False, "error": "No office credentials available"}
         
-        # Try to find a working office (prefer non-office_1 due to credential issues)
+        # Use office_1 as primary office for global entities
         primary_office = None
         for office in offices:
-            if office.office_id != "office_1":  # Skip office_1 due to credential issues
+            if office.office_id == "office_1":  # Prefer office_1 for global entities
                 primary_office = office
                 break
         
-        # If no non-office_1 found, fall back to first office
+        # If office_1 not found, fall back to first office
         if primary_office is None:
             primary_office = offices[0]
         
@@ -399,7 +399,7 @@ class MultiOfficeEntityTask:
         try:
             from snowflake_integration import SnowflakeConnector
             
-            # Connect to Snowflake
+            # Connect to Snowflake with explicit database and schema
             snowflake_conn = SnowflakeConnector(
                 account=self.snowflake_config["account"].replace(".snowflakecomputing.com", ""),
                 user=self.snowflake_config["user"],
