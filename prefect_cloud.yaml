@@ -1,0 +1,57 @@
+# Prefect Cloud Deployment Configuration
+# PestRoutes to Snowflake Data Pipeline
+
+name: pestroutes-pipeline
+prefect-version: 3.4.5
+
+# Pull configuration - download code from GitHub and install dependencies
+pull:
+  - prefect.deployments.steps.git_clone:
+      id: clone_repo
+      repository: https://github.com/alta-evanunick/testing.git
+      branch: main
+      credentials: "{{ prefect.blocks.github-credentials.github-evanunick }}"
+  - prefect.deployments.steps.pip_install_requirements:
+      directory: "{{ clone_repo.directory }}"
+      requirements_file: requirements.txt
+
+# Deployment definitions
+deployments:
+  # Full pipeline deployment - processes all entities for all offices
+  - name: pestroutes-full-pipeline
+    version: 1.0.0
+    tags:
+      - production
+      - pestroutes
+      - snowflake
+      - etl
+    description: |
+      Complete PestRoutes to Snowflake data pipeline processing all 27 entities 
+      across 17 offices with RAW and STAGING layer transformations.
+    
+    entrypoint: flows/main_pipeline.py:pestroutes_full_pipeline
+    
+    parameters:
+      # Date range for data extraction (defaults to yesterday Pacific Time)
+      # PestRoutes API expects dates in Pacific Time
+      start_date: "{{ (now('America/Los_Angeles') - timedelta(days=1)).strftime('%Y-%m-%d') }}"
+      end_date: "{{ now('America/Los_Angeles').strftime('%Y-%m-%d') }}"
+      
+      # Processing options
+      batch_size: 5000
+      max_retries: 3
+      run_staging: true
+      
+      # Entity filtering (empty = all entities)
+      entities_to_process: []
+      
+      # Office filtering (empty = all offices)
+      offices_to_process: []
+
+    work_pool:
+      name: default-work-pool
+      
+    schedule:
+      # Run daily at 2 AM UTC
+      cron: "0 2 * * *"
+      timezone: "America/Denver"
