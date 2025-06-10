@@ -24,7 +24,7 @@ def main():
     
     # Deploy using the simplified YAML
     print("\n📦 Deploying flows...")
-    cmd = "prefect deploy --all -f prefect_cloud_simple.yaml"
+    cmd = "prefect deploy --all --prefect-file prefect_cloud_simple.yaml"
     
     try:
         result = subprocess.run(cmd, shell=True, check=True, text=True)
