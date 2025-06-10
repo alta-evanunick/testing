@@ -33,13 +33,13 @@ async def load_credentials() -> Dict[str, Any]:
     try:
         # Try Prefect secret blocks (for Prefect Cloud deployment)
         logger.info("Attempting to load from Prefect secret blocks...")
-        snowflake_creds = await SnowflakeCredentials.load("snowflake-altapestanalytics")
+        snowflake_creds = await SnowflakeCredentials.load("snowflake-altapestdb")
         
         snowflake_config = {
             "account": snowflake_creds.account,
             "user": snowflake_creds.user,
             "password": snowflake_creds.password.get_secret_value(),
-            "warehouse": snowflake_creds.warehouse,
+            "warehouse": getattr(snowflake_creds, 'warehouse', os.getenv("SNOWFLAKE_WAREHOUSE", "ALTAPESTANALYTICS")),
             "database": getattr(snowflake_creds, 'database', None),
             "schema": getattr(snowflake_creds, 'schema_', None)
         }
