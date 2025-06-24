@@ -1,0 +1,16 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 24 Jun 2025 14:51:13 at https://ai-initiative-success-6i3qful.gamma.site/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://ai-initiative-success-6i3qful.gamma.site/ -O1 "C:\My Web Sites\gamma_article" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:51:22	Error: 	"Bad Request" (400) at link https://imgproxy.gamma.app/resize/quality/resizing_type:fit/width:2000/height:2000/https://cdn.gamma.app/b79nrq4ybni7xcv/6cc4da9f3eeb4a56a8e4c99c176ee4a8/original/Revenue-Focused-Transformation-8.png (from https://ai-initiative-success-6i3qful.gamma.site/)
+14:51:22	Error: 	"Bad Request" (400) at link https://imgproxy.gamma.app/resize/quality/resizing_type:fit/width:2000/https://cdn.gamma.app/b79nrq4ybni7xcv/fdf303af0ed54826a9ad852401112f79/original/ChatGPT-Image-Jun-24-2025-02_16_51-PM.png (from https://ai-initiative-success-6i3qful.gamma.site/)
+14:51:22	Error: 	"Bad Request" (400) at link https://imgproxy.gamma.app/resize/quality/resizing_type:fit/width:1200/https://cdn.gamma.app/b79nrq4ybni7xcv/generated-images/PNPGJEpJq58Ulh0Ku6ozS.png (from https://ai-initiative-success-6i3qful.gamma.site/)
+14:51:22	Error: 	"Bad Request" (400) at link https://imgproxy.gamma.app/resize/quality/resizing_type:fit/width:2000/https://cdn.gamma.app/b79nrq4ybni7xcv/f126755c05864835a847377fea23f6c7/original/EvanUnickHeadshotNoBG.png (from https://ai-initiative-success-6i3qful.gamma.site/)
+14:51:22	Error: 	"Not Found" (404) at link https://ai-initiative-success-6i3qful.gamma.site/syllab.ai (from https://ai-initiative-success-6i3qful.gamma.site/)
+
+HTTrack Website Copier/3.49-2 mirror complete in 9 seconds : 34 links scanned, 28 files written (8578967 bytes overall) [2408759 bytes received at 267639 bytes/sec], 8664257 bytes transferred using HTTP compression in 26 files, ratio 27%, 6.8 requests per connection
+(5 errors, 0 warnings, 0 messages)
