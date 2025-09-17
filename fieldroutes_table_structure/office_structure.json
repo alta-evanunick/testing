@@ -1,0 +1,100 @@
+{
+    "entityName": "office",
+    "columns": [
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Primary Key"
+      },
+      {
+        "columnName": "officeName",
+        "columnType": "string",
+        "columnDescription": "Friendly name of the office"
+      },
+      {
+        "columnName": "companyID",
+        "columnType": "integer",
+        "columnDescription": "companyID of the office"
+      },
+      {
+        "columnName": "licenseNumber",
+        "columnType": "string",
+        "columnDescription": "licenseNumber of the office"
+      },
+      {
+        "columnName": "contactNumber",
+        "columnType": "string",
+        "columnDescription": "phone number of the office"
+      },
+      {
+        "columnName": "contactEmail",
+        "columnType": "string",
+        "columnDescription": "email of the office"
+      },
+      {
+        "columnName": "website",
+        "columnType": "string",
+        "columnDescription": "website of the office"
+      },
+      {
+        "columnName": "timeZone",
+        "columnType": "string",
+        "columnDescription": "time zone of the office"
+      },
+      {
+        "columnName": "address",
+        "columnType": "string",
+        "columnDescription": "physical location of the office"
+      },
+      {
+        "columnName": "city",
+        "columnType": "string",
+        "columnDescription": "city of the office"
+      },
+      {
+        "columnName": "state",
+        "columnType": "string",
+        "columnDescription": "state of the office"
+      },
+      {
+        "columnName": "zip",
+        "columnType": "string",
+        "columnDescription": "zip code of the office"
+      },
+      {
+        "columnName": "invoiceAddress",
+        "columnType": "string",
+        "columnDescription": "invoice address of the office"
+      },
+      {
+        "columnName": "invoiceCity",
+        "columnType": "string",
+        "columnDescription": "invoice city of the office"
+      },
+      {
+        "columnName": "invoiceState",
+        "columnType": "string",
+        "columnDescription": "invoice state of the office"
+      },
+      {
+        "columnName": "invoiceZip",
+        "columnType": "string",
+        "columnDescription": "invoice zip code of the office"
+      },
+      {
+        "columnName": "cautionStatements",
+        "columnType": "string",
+        "columnDescription": "Admin > Preferences > Customer Preferences > Customer Communication > Service Notification Notes / Caution Statements (HTML markup in RAW; consider plain-text helper)"
+      },
+      {
+        "columnName": "officeLatitude",
+        "columnType": "float",
+        "columnDescription": "Latitude of the office"
+      },
+      {
+        "columnName": "officeLongitude",
+        "columnType": "float",
+        "columnDescription": "Longitude of the office"
+      }
+    ]
+  }

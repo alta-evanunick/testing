@@ -1,0 +1,200 @@
+{
+    "entityName": "Employee",
+    "columns": [
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office ID this employee belongs to"
+      },
+      {
+        "columnName": "active",
+        "columnType": "integer",
+        "columnDescription": "0: Inactive account, 1: Active account"
+      },
+      {
+        "columnName": "fname",
+        "columnType": "string",
+        "columnDescription": "Employee's first name"
+      },
+      {
+        "columnName": "lname",
+        "columnType": "string",
+        "columnDescription": "Employee's last name"
+      },
+      {
+        "columnName": "initials",
+        "columnType": "string",
+        "columnDescription": "Employee's name initials – user defined in case of duplicate's"
+      },
+      {
+        "columnName": "nickname",
+        "columnType": "string",
+        "columnDescription": "Employee's nickname"
+      },
+      {
+        "columnName": "type",
+        "columnType": "integer",
+        "columnDescription": "Employee type. 0: Office Staff, 1: Technician, 2: Sales Rep"
+      },
+      {
+        "columnName": "phone",
+        "columnType": "string",
+        "columnDescription": "Phone number"
+      },
+      {
+        "columnName": "email",
+        "columnType": "string",
+        "columnDescription": "contact email address"
+      },
+      {
+        "columnName": "username",
+        "columnType": "string",
+        "columnDescription": "Employees username"
+      },
+      {
+        "columnName": "experience",
+        "columnType": "integer",
+        "columnDescription": "Years of experience of the rep – mostly to distinguish rookies from veterans"
+      },
+      {
+        "columnName": "skills",
+        "columnType": "variant",
+        "columnDescription": "Skill map as returned by the API (explode to employee_skills in CLEAN layer)"
+      },
+      {
+        "columnName": "pic",
+        "columnType": "string",
+        "columnDescription": "URL of the employee image"
+      },
+      {
+        "columnName": "linkedEmployeeIDs",
+        "columnType": "integer",
+        "columnDescription": "The master account if this employee is linked to other accounts in other offices. For reporting purposes their stats are typically combined."
+      },
+      {
+        "columnName": "employeeLink",
+        "columnType": "string",
+        "columnDescription": "Employee's Link"
+      },
+      {
+        "columnName": "licenseNumber",
+        "columnType": "string",
+        "columnDescription": "License Number"
+      },
+      {
+        "columnName": "supervisorID",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID of supervisor"
+      },
+      {
+        "columnName": "roamingRep",
+        "columnType": "integer",
+        "columnDescription": "The master employeeID if this employee is linked to other accounts in other offices. Set as 0 if the account cannot roam."
+      },
+      {
+        "columnName": "regionalManagerOfficeIDs",
+        "columnType": "string",
+        "columnDescription": "List of officeIDs this employee is a regional manager of"
+      },
+      {
+        "columnName": "lastLogin",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "date of last login"
+      },
+      {
+        "columnName": "teamIDs",
+        "columnType": "array",
+        "columnDescription": "Unique identifier for teams to which the employee is assigned"
+      },
+      {
+        "columnName": "primaryTeam",
+        "columnType": "integer",
+        "columnDescription": "The unique ID for the employee's primary assigned team"
+      },
+      {
+        "columnName": "accessControlProfileID",
+        "columnType": "integer",
+        "columnDescription": "Access Control Profile ID"
+      },
+      {
+        "columnName": "startAddress",
+        "columnType": "string",
+        "columnDescription": "Employee's starting address on routes"
+      },
+      {
+        "columnName": "startCity",
+        "columnType": "string",
+        "columnDescription": "Employee's starting city on routes"
+      },
+      {
+        "columnName": "startState",
+        "columnType": "string",
+        "columnDescription": "Employee's starting state on routes"
+      },
+      {
+        "columnName": "startZip",
+        "columnType": "string",
+        "columnDescription": "Employee's starting zip on routes"
+      },
+      {
+        "columnName": "startLat",
+        "columnType": "float",
+        "columnDescription": "Employee's starting lat on routes"
+      },
+      {
+        "columnName": "startLng",
+        "columnType": "float",
+        "columnDescription": "Employee's starting lng on routes"
+      },
+      {
+        "columnName": "endAddress",
+        "columnType": "string",
+        "columnDescription": "Employee's ending address on routes"
+      },
+      {
+        "columnName": "endCity",
+        "columnType": "string",
+        "columnDescription": "Employee's ending city on routes"
+      },
+      {
+        "columnName": "endState",
+        "columnType": "string",
+        "columnDescription": "Employee's ending state on routes"
+      },
+      {
+        "columnName": "endZip",
+        "columnType": "string",
+        "columnDescription": "Employee's ending zip on routes"
+      },
+      {
+        "columnName": "endLat",
+        "columnType": "float",
+        "columnDescription": "Employee's ending lat on routes"
+      },
+      {
+        "columnName": "endLng",
+        "columnType": "float",
+        "columnDescription": "Employee's ending lng on routes"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Employee dateUpdated"
+      },
+      {
+        "columnName": "twoFactorRequired",
+        "columnType": "integer",
+        "columnDescription": "Define whether Employee is required two factor authentication. 0: not required, 1: required"
+      },
+      {
+        "columnName": "twoFactorConfigDueDate",
+        "columnType": "string",
+        "columnDescription": "Expiration date for Employee to configure two factor authentication"
+      }
+    ]
+  }

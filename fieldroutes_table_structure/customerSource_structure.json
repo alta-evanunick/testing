@@ -1,0 +1,35 @@
+{
+    "entityName": "customerSource",
+    "columns": [
+      {
+        "columnName": "sourceID",
+        "columnType": "integer",
+        "columnDescription": "Primary key"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office ID the source belongs to (-1 indicates global)"
+      },
+      {
+        "columnName": "source",
+        "columnType": "string",
+        "columnDescription": "Name of the source"
+      },
+      {
+        "columnName": "salesRoutesDefault",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if this is a default source for the mobile app"
+      },
+      {
+        "columnName": "visible",
+        "columnType": "integer",
+        "columnDescription": "Visibility of the source"
+      },
+      {
+        "columnName": "dealsSource",
+        "columnType": "integer",
+        "columnDescription": "set as 1 if source is deals"
+      }
+    ]
+  }

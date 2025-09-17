@@ -1,0 +1,460 @@
+{
+    "entityName": "subscription",
+    "columns": [
+      {
+        "columnName": "subscriptionID",
+        "columnType": "integer",
+        "columnDescription": "Unique ID"
+      },
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "Customer ID which this subscription belongs to"
+      },
+      {
+        "columnName": "billToAccountID",
+        "columnType": "integer",
+        "columnDescription": "Billing Account which this subscription belongs to"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office ID which this subscription belongs to"
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date this subscription was added / created. Sold date."
+      },
+      {
+        "columnName": "contractAdded",
+        "columnType": "string",
+        "columnDescription": "Date the last contract was added / created."
+      },
+      {
+        "columnName": "active",
+        "columnType": "integer",
+        "columnDescription": "0: frozen, 1: active and being placed in the job pool"
+      },
+      {
+        "columnName": "activeText",
+        "columnType": "string",
+        "columnDescription": "Friendly text version of active"
+      },
+      {
+        "columnName": "initialQuote",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The retail quoted price for the initial service on this subscription."
+      },
+      {
+        "columnName": "initialDiscount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The discount to be applied to the initial service"
+      },
+      {
+        "columnName": "initialServiceTotal",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The net amount of initialQuote-initialDiscount. DOES NOT INCLUDE add-ons"
+      },
+      {
+        "columnName": "yifDiscount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The discount provided if paying for a year in advance"
+      },
+      {
+        "columnName": "recurringCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "A shortcut for the subtotal of the recurring ticket"
+      },
+      {
+        "columnName": "contractValue",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Calculated as the initial total + the number of recurring services*recurringCharge. There are some tweaks available for different companies / preferences, particularly when dealing with recurring billing."
+      },
+      {
+        "columnName": "annualRecurringValue",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Calculated as the recurringCharge * the number of services/year"
+      },
+      {
+        "columnName": "billingFrequency",
+        "columnType": "integer",
+        "columnDescription": "How often this subscription gets their invoice generated – can be separate from when their service takes place. 0 / -1 represents getting billed after each service."
+      },
+      {
+        "columnName": "frequency",
+        "columnType": "integer",
+        "columnDescription": "The frequency that the services get scheduled. -1 represents One-Time, 0 represents 'as needed'. Greater than 0 represents the frequency in days. If it is divisible by 30, it is converted to months – so 90 would represent 3 months and not necessarily 90 days."
+      },
+      {
+        "columnName": "followupService",
+        "columnType": "integer",
+        "columnDescription": "How many days after the initial service to schedule the first recurring service."
+      },
+      {
+        "columnName": "agreementLength",
+        "columnType": "integer",
+        "columnDescription": "Agreement Length"
+      },
+      {
+        "columnName": "nextService",
+        "columnType": "string",
+        "columnDescription": "When the next service is due. If nextService is null or in the past, consider nextAppointmentDueDate."
+      },
+      {
+        "columnName": "lastCompleted",
+        "columnType": "date",
+        "columnDescription": "When the last service was completed"
+      },
+      {
+        "columnName": "serviced",
+        "columnType": "integer",
+        "columnDescription": "The service type ID for the regular recurring services"
+      },
+      {
+        "columnName": "serviceType",
+        "columnType": "string",
+        "columnDescription": "Friendly description of the serviceID"
+      },
+      {
+        "columnName": "soldBy",
+        "columnType": "integer",
+        "columnDescription": "The employee ID who gets credit for this sale. Defaults to the user who added the subscription"
+      },
+      {
+        "columnName": "soldBy2",
+        "columnType": "integer",
+        "columnDescription": "Additional employeeID that gets credit for this sale"
+      },
+      {
+        "columnName": "soldBy3",
+        "columnType": "integer",
+        "columnDescription": "Additional employeeID that gets credit for this sale"
+      },
+      {
+        "columnName": "preferredTech",
+        "columnType": "integer",
+        "columnDescription": "The employee ID of the preferred tech"
+      },
+      {
+        "columnName": "addedBy",
+        "columnType": "integer",
+        "columnDescription": "The employee ID that added the subscription"
+      },
+      {
+        "columnName": "initialAppointmentID",
+        "columnType": "integer",
+        "columnDescription": "The initial service appointment ID"
+      },
+      {
+        "columnName": "initialStatus",
+        "columnType": "integer",
+        "columnDescription": "A shortcut for the status of the initial appointment"
+      },
+      {
+        "columnName": "initialStatusText",
+        "columnType": "string",
+        "columnDescription": "Friendly text version of the initialStatus"
+      },
+      {
+        "columnName": "dateCancelled",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date the subscription was cancelled if any."
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date the subscription was last updated."
+      },
+      {
+        "columnName": "nextAppointmentDueDate",
+        "columnType": "string",
+        "columnDescription": "Appointment Due Date"
+      },
+      {
+        "columnName": "cxlNotes",
+        "columnType": "string",
+        "columnDescription": "The notes associated with cancelling this appointment. Group_Concat-ed in case of multiple cancellations"
+      },
+      {
+        "columnName": "cancelledBy",
+        "columnType": "integer",
+        "columnDescription": "The employeeID that performed the cancellation, '0' indicates by the System"
+      },
+      {
+        "columnName": "subscriptionLink",
+        "columnType": "string",
+        "columnDescription": "Subscription Link"
+      },
+      {
+        "columnName": "poNumber",
+        "columnType": "string",
+        "columnDescription": "Subscription poNumber"
+      },
+      {
+        "columnName": "appointmentIDs",
+        "columnType": "string",
+        "columnDescription": "Every appointment attached to this subscription"
+      },
+      {
+        "columnName": "completedAppointmentIDs",
+        "columnType": "string",
+        "columnDescription": "Every completed appointment attached to this subscription"
+      },
+      {
+        "columnName": "initialAppointment",
+        "columnType": "array",
+        "columnDescription": "The initial appointment object if includeInitialAppointments = true"
+      },
+      {
+        "columnName": "recurringTicket",
+        "columnType": "array",
+        "columnDescription": "The recurring ticket template associated with this subscription"
+      },
+      {
+        "columnName": "addOns",
+        "columnType": "array",
+        "columnDescription": "An array of Add-On objects associated with the INITIAL appointment"
+      },
+      {
+        "columnName": "leadID",
+        "columnType": "integer",
+        "columnDescription": "Primary key for lead"
+      },
+      {
+        "columnName": "leadDateAdded",
+        "columnType": "string",
+        "columnDescription": "Time that this lead was created"
+      },
+      {
+        "columnName": "leadUpdated",
+        "columnType": "string",
+        "columnDescription": "Time that this lead was last updated"
+      },
+      {
+        "columnName": "leadAddedBy",
+        "columnType": "integer",
+        "columnDescription": "employeeID that created this lead"
+      },
+      {
+        "columnName": "leadSourceID",
+        "columnType": "integer",
+        "columnDescription": "Lead Source ID"
+      },
+      {
+        "columnName": "leadSource",
+        "columnType": "string",
+        "columnDescription": "Lead Source Description"
+      },
+      {
+        "columnName": "leadStatus",
+        "columnType": "integer",
+        "columnDescription": "Lead Status"
+      },
+      {
+        "columnName": "leadStatusText",
+        "columnType": "string",
+        "columnDescription": "Lead Status Text"
+      },
+      {
+        "columnName": "leadStageID",
+        "columnType": "integer",
+        "columnDescription": "Lead Stage ID"
+      },
+      {
+        "columnName": "leadStage",
+        "columnType": "string",
+        "columnDescription": "Lead Stage Description"
+      },
+      {
+        "columnName": "leadAssignedTo",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID to whom the lead is assigned"
+      },
+      {
+        "columnName": "leadDateAssigned",
+        "columnType": "string",
+        "columnDescription": "Time the lead was assigned"
+      },
+      {
+        "columnName": "leadValue",
+        "columnType": "number",
+        "columnDescription": "Value of the lead"
+      },
+      {
+        "columnName": "leadDateClosed",
+        "columnType": "string",
+        "columnDescription": "Time the lead was closed"
+      },
+      {
+        "columnName": "leadLostReason",
+        "columnType": "string",
+        "columnDescription": "Lead Lost Reason ID"
+      },
+      {
+        "columnName": "leadLostReasonText",
+        "columnType": "string",
+        "columnDescription": "Lead Lost Reason"
+      },
+      {
+        "columnName": "sourceID",
+        "columnType": "integer",
+        "columnDescription": "Subscription Source ID"
+      },
+      {
+        "columnName": "source",
+        "columnType": "string",
+        "columnDescription": "Subscription Source Description"
+      },
+      {
+        "columnName": "subSourceID",
+        "columnType": "integer",
+        "columnDescription": "Subscription SubSource ID"
+      },
+      {
+        "columnName": "subSource",
+        "columnType": "string",
+        "columnDescription": "Subscription SubSource Description"
+      },
+      {
+        "columnName": "annualRecurringServices",
+        "columnType": "integer",
+        "columnDescription": "Services per year without counting initial"
+      },
+      {
+        "columnName": "unitIDs",
+        "columnType": "array",
+        "columnDescription": "An array of unit IDs available for this subscription (for multi unit customers) - defaults to all unless specific units have been selected"
+      },
+      {
+        "columnName": "regionID",
+        "columnType": "integer",
+        "columnDescription": "RegionID of the subscription"
+      },
+      {
+        "columnName": "initialInvoice",
+        "columnType": "string",
+        "columnDescription": "When the initial invoice should get generated. INITIAL_COMPLETION = when the initial service is completed. SIGNED_AGREEMENT = when the agreement is signed. INITIAL_BILLING_DATE = on a specified billing date."
+      },
+      {
+        "columnName": "initialBillingDate",
+        "columnType": "string",
+        "columnDescription": "The date to generate initial invoice when initialInvoice = INITIAL_BILLING_DATE"
+      },
+      {
+        "columnName": "renewalFrequency",
+        "columnType": "integer",
+        "columnDescription": "How often a subscription is due for renewal"
+      },
+      {
+        "columnName": "renewalDate",
+        "columnType": "string",
+        "columnDescription": "Next renewal date"
+      },
+      {
+        "columnName": "customDate",
+        "columnType": "string",
+        "columnDescription": "custom next appointment date ('0000-00-00' in RAW indicates none)"
+      },
+      {
+        "columnName": "sentriconConnected",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the subscription is connected to sentricon"
+      },
+      {
+        "columnName": "sentriconSiteID",
+        "columnType": "string",
+        "columnDescription": "Sentricon Site ID or null if not connected to Sentricon"
+      },
+      {
+        "columnName": "seasonalStart",
+        "columnType": "string",
+        "columnDescription": "Date the season starts (RAW uses '0000-00-00' when not seasonal)"
+      },
+      {
+        "columnName": "seasonalEnd",
+        "columnType": "string",
+        "columnDescription": "Date the season ends (RAW uses '0000-00-00' when not seasonal)"
+      },
+      {
+        "columnName": "nextBillingDate",
+        "columnType": "string",
+        "columnDescription": "Next billing date for the subscription ('0000-00-00' when unset)"
+      },
+      {
+        "columnName": "maxMonthlyCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Max monthly charge for the subscription"
+      },
+      {
+        "columnName": "expirationDate",
+        "columnType": "string",
+        "columnDescription": "Expiration Date for the subscription ('0000-00-00' when unset)."
+      },
+      {
+        "columnName": "lastAppointment",
+        "columnType": "string",
+        "columnDescription": "Last completed appointment associated with the subscription"
+      },
+      {
+        "columnName": "templateType",
+        "columnType": "string",
+        "columnDescription": "The template type associated with the service type"
+      },
+      {
+        "columnName": "parentID",
+        "columnType": "integer",
+        "columnDescription": "The subscriptionID of the service plan that the service round belongs to"
+      },
+      {
+        "columnName": "duration",
+        "columnType": "string",
+        "columnDescription": "Default duration of services in minutes"
+      },
+      {
+        "columnName": "preferredDays",
+        "columnType": "string",
+        "columnDescription": "Preferred days (comma-separated index codes; blank string means no preference)"
+      },
+      {
+        "columnName": "preferredStart",
+        "columnType": "string",
+        "columnDescription": "Preferred appointment start time bound"
+      },
+      {
+        "columnName": "preferredEnd",
+        "columnType": "string",
+        "columnDescription": "Preferred appointment end time bound"
+      },
+      {
+        "columnName": "callAhead",
+        "columnType": "integer",
+        "columnDescription": "int in minutes"
+      },
+      {
+        "columnName": "autopayPaymentProfileID",
+        "columnType": "integer",
+        "columnDescription": "autopayPaymentProfileID"
+      },
+      {
+        "columnName": "billingTermsDays",
+        "columnType": "integer",
+        "columnDescription": "Net Billing Days"
+      },
+      {
+        "columnName": "onHold",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the subscription is on hold"
+      },
+      {
+        "columnName": "customScheduleID",
+        "columnType": "integer",
+        "columnDescription": "ID of a pre-defined custom-schedule for services"
+      },
+      {
+        "columnName": "capacityEstimate",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Capacity estimate for the subscription"
+      }
+    ]
+  }

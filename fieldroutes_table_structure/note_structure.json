@@ -1,0 +1,120 @@
+{
+    "entityName": "note",
+    "columns": [
+      {
+        "columnName": "noteID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "officeIDs",
+        "columnType": "string",
+        "columnDescription": "Office IDs (comma-separated when multiple)"
+      },
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "Customer ID"
+      },
+      {
+        "columnName": "customerName",
+        "columnType": "string",
+        "columnDescription": "Customer Name"
+      },
+      {
+        "columnName": "customerSpouse",
+        "columnType": "string",
+        "columnDescription": "Spouse Field"
+      },
+      {
+        "columnName": "companyName",
+        "columnType": "string",
+        "columnDescription": "Company Name"
+      },
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "Employee ID that created the note"
+      },
+      {
+        "columnName": "employeeName",
+        "columnType": "string",
+        "columnDescription": "Employee name that created the note"
+      },
+      {
+        "columnName": "date",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date note was created"
+      },
+      {
+        "columnName": "showCustomer",
+        "columnType": "integer",
+        "columnDescription": "Whether or not this shows up on the invoices or customer portal so the customer can see it"
+      },
+      {
+        "columnName": "showTech",
+        "columnType": "integer",
+        "columnDescription": "Whether or not this shows up in the tech app"
+      },
+      {
+        "columnName": "cancellationReasonID",
+        "columnType": "integer",
+        "columnDescription": "If this is part of a cancellation, the ID cancellation reason selected"
+      },
+      {
+        "columnName": "cancellationReason",
+        "columnType": "string",
+        "columnDescription": "If this is part of a cancellation, the description of the cancellation reason selected"
+      },
+      {
+        "columnName": "typeID",
+        "columnType": "integer",
+        "columnDescription": "The ID for the contact type"
+      },
+      {
+        "columnName": "type",
+        "columnType": "string",
+        "columnDescription": "Description of note type"
+      },
+      {
+        "columnName": "contactTypeCategories",
+        "columnType": "string",
+        "columnDescription": "Categories associated with the note type"
+      },
+      {
+        "columnName": "notes",
+        "columnType": "string",
+        "columnDescription": "The actual note content (HTML markup in RAW; consider adding plain-text extraction in CLEAN)"
+      },
+      {
+        "columnName": "referenceID",
+        "columnType": "integer",
+        "columnDescription": "If this is in regards to a subscription cancellation, the subscription ID. Can also be a re-instatement subscription ID, etc... depending on the note type"
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date this note was created"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the note was last updated"
+      },
+      {
+        "columnName": "openCount",
+        "columnType": "integer",
+        "columnDescription": "Number of times the email has been opened by a customer"
+      },
+      {
+        "columnName": "clicksCount",
+        "columnType": "integer",
+        "columnDescription": "Number of times the email has been clicked by a customer"
+      },
+      {
+        "columnName": "emailStatus",
+        "columnType": "string",
+        "columnDescription": "Status of the email e.g. Processing, Delivered"
+      }
+    ]
+  }

@@ -1,0 +1,40 @@
+{
+    "entityName": "knock",
+    "columns": [
+      {
+        "columnName": "knockID",
+        "columnType": "integer",
+        "columnDescription": "Primary Key"
+      },
+      {
+        "columnName": "type",
+        "columnType": "integer",
+        "columnDescription": "Knock Type - Tracks the type of knock interaction: if type = 0 then serviceID is the competitorID; if type = 1 then serviceID is the objectionID"
+      },
+      {
+        "columnName": "doorID",
+        "columnType": "integer",
+        "columnDescription": "Door the knock is associated with"
+      },
+      {
+        "columnName": "serviceID",
+        "columnType": "integer",
+        "columnDescription": "denotes either competitorID if type=0 or objectionID if type=1"
+      },
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID of employee who logged the knock"
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the knock was created"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the knock was updated"
+      }
+    ]
+  }

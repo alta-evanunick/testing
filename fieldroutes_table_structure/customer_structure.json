@@ -1,0 +1,500 @@
+{
+    "entityName": "customer",
+    "columns": [
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "billToAccountID",
+        "columnType": "integer",
+        "columnDescription": "Billing Account which this subscription belongs to"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the office this customer belongs to"
+      },
+      {
+        "columnName": "fname",
+        "columnType": "string",
+        "columnDescription": "The first name of the customer"
+      },
+      {
+        "columnName": "lname",
+        "columnType": "string",
+        "columnDescription": "The last name of the customer"
+      },
+      {
+        "columnName": "companyName",
+        "columnType": "string",
+        "columnDescription": "The company name of the customer"
+      },
+      {
+        "columnName": "spouse",
+        "columnType": "string",
+        "columnDescription": "Spouse or alternate contact"
+      },
+      {
+        "columnName": "commercialAccount",
+        "columnType": "integer",
+        "columnDescription": "0: Not Commercial, 1: Commercial"
+      },
+      {
+        "columnName": "status",
+        "columnType": "integer",
+        "columnDescription": "0: Inactive Customer, 1: Active Customer"
+      },
+      {
+        "columnName": "statusText",
+        "columnType": "string",
+        "columnDescription": "Friendly status"
+      },
+      {
+        "columnName": "email",
+        "columnType": "string",
+        "columnDescription": "Email Address of customer"
+      },
+      {
+        "columnName": "phone1",
+        "columnType": "string",
+        "columnDescription": "The primary phone number of the customer"
+      },
+      {
+        "columnName": "ext1",
+        "columnType": "string",
+        "columnDescription": "Extension for the primary phone of the customer"
+      },
+      {
+        "columnName": "phone2",
+        "columnType": "string",
+        "columnDescription": "The secondary phone number of the customer"
+      },
+      {
+        "columnName": "ext2",
+        "columnType": "string",
+        "columnDescription": "Extension for the secondary phone of the customer"
+      },
+      {
+        "columnName": "address",
+        "columnType": "string",
+        "columnDescription": "Customer Service Address"
+      },
+      {
+        "columnName": "city",
+        "columnType": "string",
+        "columnDescription": "Customer Service City"
+      },
+      {
+        "columnName": "state",
+        "columnType": "string",
+        "columnDescription": "Customer Service State"
+      },
+      {
+        "columnName": "zip",
+        "columnType": "string",
+        "columnDescription": "Customer Service Zip"
+      },
+      {
+        "columnName": "billingCompanyName",
+        "columnType": "string",
+        "columnDescription": "Billing Company Name"
+      },
+      {
+        "columnName": "billingFName",
+        "columnType": "string",
+        "columnDescription": "Billing First Name"
+      },
+      {
+        "columnName": "billingLName",
+        "columnType": "string",
+        "columnDescription": "Billing Last Name"
+      },
+      {
+        "columnName": "billingCountryID",
+        "columnType": "string",
+        "columnDescription": "Billing CountryID"
+      },
+      {
+        "columnName": "billingAddress",
+        "columnType": "string",
+        "columnDescription": "Billing Address"
+      },
+      {
+        "columnName": "billingCity",
+        "columnType": "string",
+        "columnDescription": "Billing City"
+      },
+      {
+        "columnName": "billingState",
+        "columnType": "string",
+        "columnDescription": "Billing State"
+      },
+      {
+        "columnName": "billingZip",
+        "columnType": "string",
+        "columnDescription": "Billing Zip"
+      },
+      {
+        "columnName": "billingPhone",
+        "columnType": "string",
+        "columnDescription": "Billing Phone"
+      },
+      {
+        "columnName": "billingEmail",
+        "columnType": "string",
+        "columnDescription": "Billing Email"
+      },
+      {
+        "columnName": "lat",
+        "columnType": "float",
+        "columnDescription": "Latitude"
+      },
+      {
+        "columnName": "lng",
+        "columnType": "float",
+        "columnDescription": "Longitude"
+      },
+      {
+        "columnName": "squareFeet",
+        "columnType": "integer",
+        "columnDescription": "SquareFeet"
+      },
+      {
+        "columnName": "addedByID",
+        "columnType": "integer",
+        "columnDescription": "The user ID who created this customer"
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date this customer account was created"
+      },
+      {
+        "columnName": "dateCancelled",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date this customer account was cancelled"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date this customer was last changed"
+      },
+      {
+        "columnName": "sourceID",
+        "columnType": "integer",
+        "columnDescription": "The source ID of how the customer was obtained"
+      },
+      {
+        "columnName": "source",
+        "columnType": "string",
+        "columnDescription": "Friendly version of the source"
+      },
+      {
+        "columnName": "aPay",
+        "columnType": "string",
+        "columnDescription": "Autopay setting/method code for the customer"
+      },
+      {
+        "columnName": "preferredTechID",
+        "columnType": "integer",
+        "columnDescription": "The user ID of the preferred tech"
+      },
+      {
+        "columnName": "paidInFull",
+        "columnType": "integer",
+        "columnDescription": "Whether or not this customer prefers to pay in advance – flag"
+      },
+      {
+        "columnName": "subscriptionIDs",
+        "columnType": "string",
+        "columnDescription": "Comma-separated subscription IDs attached to this customer"
+      },
+      {
+        "columnName": "balance",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The total outstanding balance of the customer"
+      },
+      {
+        "columnName": "balanceAge",
+        "columnType": "integer",
+        "columnDescription": "The number of days this customer has owed any invoice"
+      },
+      {
+        "columnName": "responsibleBalance",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The total outstanding balance of the customer"
+      },
+      {
+        "columnName": "responsibleBalanceAge",
+        "columnType": "integer",
+        "columnDescription": "The number of days this customer has owed any invoice"
+      },
+      {
+        "columnName": "customerLink",
+        "columnType": "string",
+        "columnDescription": "Customer Link from the that comes from the integration"
+      },
+      {
+        "columnName": "customerNumber",
+        "columnType": "string",
+        "columnDescription": "Customer Number that comes from the integration (Legacy Customer Number if applicable)"
+      },
+      {
+        "columnName": "masterAccount",
+        "columnType": "string",
+        "columnDescription": "CustomerID for the master account in the connected property"
+      },
+      {
+        "columnName": "preferredBillingDate",
+        "columnType": "string",
+        "columnDescription": "Preferred day for billing (date string or sentinel values such as '0'/'-1')"
+      },
+      {
+        "columnName": "paymentHoldDate",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Payment Hold Date"
+      },
+      {
+        "columnName": "mostRecentCreditCardLastFour",
+        "columnType": "string",
+        "columnDescription": "Last 4 digits of most recently used Credit Card"
+      },
+      {
+        "columnName": "mostRecentCreditCardExpirationDate",
+        "columnType": "string",
+        "columnDescription": "Expiration date of most recently used Credit Card"
+      },
+      {
+        "columnName": "appointmentIDs",
+        "columnType": "string",
+        "columnDescription": "An comma-separated string of appointmentIDs associated with the customer"
+      },
+      {
+        "columnName": "ticketIDs",
+        "columnType": "string",
+        "columnDescription": "An comma-separated string of ticketIDs associated with the customer"
+      },
+      {
+        "columnName": "paymentIDs",
+        "columnType": "string",
+        "columnDescription": "An comma-separated string of paymentIDs associated with the customer"
+      },
+      {
+        "columnName": "subscriptions",
+        "columnType": "array",
+        "columnDescription": "An optional array of all subscription objects. Looks for the includeSubscriptions=true parameter"
+      },
+      {
+        "columnName": "unitIDs",
+        "columnType": "string",
+        "columnDescription": "Comma-separated unit IDs associated with the customer (nullable)"
+      },
+      {
+        "columnName": "regionID",
+        "columnType": "integer",
+        "columnDescription": "RegionID of the customer"
+      },
+      {
+        "columnName": "mapCode",
+        "columnType": "string",
+        "columnDescription": "Mapcode of the customer"
+      },
+      {
+        "columnName": "mapPage",
+        "columnType": "string",
+        "columnDescription": "Mappage of the customer"
+      },
+      {
+        "columnName": "specialScheduling",
+        "columnType": "string",
+        "columnDescription": "Special Scheduling for the customer"
+      },
+      {
+        "columnName": "taxRate",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "Tax rate of the customer"
+      },
+      {
+        "columnName": "stateTax",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "State Tax rate of the customer"
+      },
+      {
+        "columnName": "cityTax",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "City Tax rate of the customer"
+      },
+      {
+        "columnName": "countyTax",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "County Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax1",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District 1 Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax2",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District 2 Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax3",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District 3 Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax4",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District 4 Tax rate of the customer"
+      },
+      {
+        "columnName": "districtTax5",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "District 5 Tax rate of the customer"
+      },
+      {
+        "columnName": "districtCode1",
+        "columnType": "number",
+        "columnDescription": "District 1 Code of the customer"
+      },
+      {
+        "columnName": "districtCode2",
+        "columnType": "number",
+        "columnDescription": "District 2 Code of the customer"
+      },
+      {
+        "columnName": "districtCode3",
+        "columnType": "number",
+        "columnDescription": "District 3 Code of the customer"
+      },
+      {
+        "columnName": "districtCode4",
+        "columnType": "number",
+        "columnDescription": "District 4 Code of the customer"
+      },
+      {
+        "columnName": "districtCode5",
+        "columnType": "number",
+        "columnDescription": "District 5 Code of the customer"
+      },
+      {
+        "columnName": "customTax",
+        "columnType": "decimal(8,6)",
+        "columnDescription": "Custom Tax rate of the customer"
+      },
+      {
+        "columnName": "zipTaxID",
+        "columnType": "integer",
+        "columnDescription": "Zip Tax ID of the customer"
+      },
+      {
+        "columnName": "smsReminders",
+        "columnType": "integer",
+        "columnDescription": "Customer SMS reminder preference"
+      },
+      {
+        "columnName": "phoneReminders",
+        "columnType": "integer",
+        "columnDescription": "Customer phone reminder preference"
+      },
+      {
+        "columnName": "emailReminders",
+        "columnType": "integer",
+        "columnDescription": "Customer email reminder preference"
+      },
+      {
+        "columnName": "customerSource",
+        "columnType": "string",
+        "columnDescription": "Customer source"
+      },
+      {
+        "columnName": "customerSourceID",
+        "columnType": "string",
+        "columnDescription": "Customer sourceID"
+      },
+      {
+        "columnName": "customerSubSourceID",
+        "columnType": "integer",
+        "columnDescription": "Customer SubSource ID"
+      },
+      {
+        "columnName": "customerSubSource",
+        "columnType": "string",
+        "columnDescription": "Customer SubSource Description"
+      },
+      {
+        "columnName": "maxMonthlyCharge",
+        "columnType": "number",
+        "columnDescription": "Max monthly charge for the customer"
+      },
+      {
+        "columnName": "useStructures",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the customer is marked as a structure customer (a customer can be residential, multi-unit, or structure)"
+      },
+      {
+        "columnName": "isMultiUnit",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the customer is marked as a multi-unit customer (a customer can be residential, multi-unit, or structure)"
+      },
+      {
+        "columnName": "autoPayPaymentProfileID",
+        "columnType": "integer",
+        "columnDescription": "ID of the autopay paymentProfile attached to the customer"
+      },
+      {
+        "columnName": "divisionID",
+        "columnType": "integer",
+        "columnDescription": "divisionID of the customer (-1 indicates unassigned)"
+      },
+      {
+        "columnName": "subPropertyTypeID",
+        "columnType": "integer",
+        "columnDescription": "Sub-Property Type ID of the customer"
+      },
+      {
+        "columnName": "subPropertyType",
+        "columnType": "string",
+        "columnDescription": "Sub-Property Type Description of the customer"
+      },
+      {
+        "columnName": "agingDate",
+        "columnType": "date",
+        "columnDescription": "Date the balance began"
+      },
+      {
+        "columnName": "responsibleAgingDate",
+        "columnType": "date",
+        "columnDescription": "Date the responsibleBalance began"
+      },
+      {
+        "columnName": "salesmanAPay",
+        "columnType": "integer",
+        "columnDescription": "Sales Rep APay customer flag"
+      },
+      {
+        "columnName": "purpleDragon",
+        "columnType": "integer",
+        "columnDescription": "Purple Dragon customer flag"
+      },
+      {
+        "columnName": "termiteMonitoring",
+        "columnType": "integer",
+        "columnDescription": "Switch Over customer flag"
+      },
+      {
+        "columnName": "pendingCancel",
+        "columnType": "integer",
+        "columnDescription": "Pending cancel customer flag"
+      }
+    ]
+  }

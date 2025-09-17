@@ -1,0 +1,25 @@
+{
+    "entityName": "disbursement",
+    "columns": [
+      {
+        "columnName": "gatewayDisbursementID",
+        "columnType": "integer",
+        "columnDescription": "Gateway Disbursement Unique Identifier"
+      },
+      {
+        "columnName": "dateCreated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the disbursement was created"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the disbursement was last updated"
+      },
+      {
+        "columnName": "amount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Amount of the disbursement"
+      }
+    ]
+  }

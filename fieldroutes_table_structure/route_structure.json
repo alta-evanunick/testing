@@ -1,0 +1,140 @@
+{
+    "entityName": "route",
+    "columns": [
+      {
+        "columnName": "routeID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "title",
+        "columnType": "string",
+        "columnDescription": "Title of route"
+      },
+      {
+        "columnName": "templateID",
+        "columnType": "integer",
+        "columnDescription": "routeTemplateID"
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the route was added"
+      },
+      {
+        "columnName": "addedBy",
+        "columnType": "integer",
+        "columnDescription": "ID of employee who added this route"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "OfficeID to which the route belongs"
+      },
+      {
+        "columnName": "groupID",
+        "columnType": "integer",
+        "columnDescription": "routeGroupID"
+      },
+      {
+        "columnName": "groupTitle",
+        "columnType": "string",
+        "columnDescription": "Friendly name of Route Group"
+      },
+      {
+        "columnName": "date",
+        "columnType": "date",
+        "columnDescription": "date of this route"
+      },
+      {
+        "columnName": "dayNotes",
+        "columnType": "string",
+        "columnDescription": "Notes about this route viewable from the day schedule page"
+      },
+      {
+        "columnName": "dayAlert",
+        "columnType": "string",
+        "columnDescription": "Alert notes for day schedule page"
+      },
+      {
+        "columnName": "dayID",
+        "columnType": "integer",
+        "columnDescription": "scheduleDayID"
+      },
+      {
+        "columnName": "additionalTechs",
+        "columnType": "string",
+        "columnDescription": "EmployeeIDs of additional techs on the appointment. Comma separated."
+      },
+      {
+        "columnName": "assignedTech",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID assigned to route. 0 represents no tech assigned."
+      },
+      {
+        "columnName": "apiCanSchedule",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 when the API has access to schedule to this route."
+      },
+      {
+        "columnName": "scheduleTeams",
+        "columnType": "array",
+        "columnDescription": "Array of teams that can schedule to the route."
+      },
+      {
+        "columnName": "scheduleTypes",
+        "columnType": "array",
+        "columnDescription": "Array of system types that can schedule to the route. (0 office staff, 1 techs, 2 sales, 3 api)"
+      },
+      {
+        "columnName": "averageLatitude",
+        "columnType": "float",
+        "columnDescription": "Average latitude of customers scheduled to this route (or null)"
+      },
+      {
+        "columnName": "averageLongitude",
+        "columnType": "float",
+        "columnDescription": "Average longitude of customers scheduled to this route (or null)"
+      },
+      {
+        "columnName": "averageDistance",
+        "columnType": "float",
+        "columnDescription": "Average distance of customers scheduled to this route to the given latitude and longitude parameters (or the office latitude and longitude if not sent)"
+      },
+      {
+        "columnName": "lockedRoute",
+        "columnType": "integer",
+        "columnDescription": "1 when the route is locked from changes, 0 otherwise"
+      },
+      {
+        "columnName": "capacityEstimateValue",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Capacity estimate value for the route"
+      },
+      {
+        "columnName": "distanceScore",
+        "columnType": "integer",
+        "columnDescription": "Distance score metric returned by FieldRoutes"
+      },
+      {
+        "columnName": "totalDistance",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Total distance calculated for the route"
+      },
+      {
+        "columnName": "estimatedAppointmentsDurationMinutes",
+        "columnType": "integer",
+        "columnDescription": "Estimated appointment duration in minutes"
+      },
+      {
+        "columnName": "estimatedDrivingDurationSeconds",
+        "columnType": "integer",
+        "columnDescription": "Estimated driving duration in seconds"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "date this route was last updated"
+      }
+    ]
+  }

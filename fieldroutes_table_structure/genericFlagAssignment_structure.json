@@ -1,0 +1,35 @@
+{
+  "entityName": "genericFlagAssignment",
+  "columns": [
+    {
+      "columnName": "genericFlagAssignmentID",
+      "columnType": "integer",
+      "columnDescription": "Unique Identifier"
+    },
+    {
+      "columnName": "genericFlagID",
+      "columnType": "integer",
+      "columnDescription": "Foreign Key"
+    },
+    {
+      "columnName": "entityID",
+      "columnType": "integer",
+      "columnDescription": "CUST, EQAS, SUBS, or APPT ID"
+    },
+    {
+      "columnName": "type",
+      "columnType": "string",
+      "columnDescription": "Type of flag assignment"
+    },
+    {
+      "columnName": "dateCreated",
+      "columnType": "timestamp_ntz",
+      "columnDescription": "Date generic flag assignment was created"
+    },
+    {
+      "columnName": "dateUpdated",
+      "columnType": "timestamp_ntz",
+      "columnDescription": "Date generic flag assignment was last updated"
+    }
+  ]
+}

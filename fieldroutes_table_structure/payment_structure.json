@@ -1,0 +1,140 @@
+{
+    "entityName": "payment",
+    "columns": [
+      {
+        "columnName": "paymentID",
+        "columnType": "integer",
+        "columnDescription": "Payment Unique Identifier"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office Unique Identifier"
+      },
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "Customer Unique Identifier"
+      },
+      {
+        "columnName": "date",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Payment date"
+      },
+      {
+        "columnName": "paymentMethod",
+        "columnType": "integer",
+        "columnDescription": "Payment Method (0:Coupon, 1:Cash, 2:Check, 3:Credit Card, 4:ACH, 5:Credit Memo)"
+      },
+      {
+        "columnName": "amount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Payment amount"
+      },
+      {
+        "columnName": "appliedAmount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Amount of the payment that was used"
+      },
+      {
+        "columnName": "unassignedAmount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Amount of the payment that was not used yet"
+      },
+      {
+        "columnName": "status",
+        "columnType": "integer",
+        "columnDescription": "Status of the payment (0:Unsuccessful, 1:Successful, 2:Refunded)"
+      },
+      {
+        "columnName": "invoiceIDs",
+        "columnType": "string",
+        "columnDescription": "Ticket IDs this payment was applied to (comma-separated in RAW)"
+      },
+      {
+        "columnName": "paymentApplications",
+        "columnType": "array",
+        "columnDescription": "Array of payment applications associated with the ticket"
+      },
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID who recorded the payment"
+      },
+      {
+        "columnName": "officePayment",
+        "columnType": "integer",
+        "columnDescription": "officePayment flag"
+      },
+      {
+        "columnName": "collectionPayment",
+        "columnType": "integer",
+        "columnDescription": "collectionPayment flag"
+      },
+      {
+        "columnName": "writeOff",
+        "columnType": "integer",
+        "columnDescription": "writeOff flag"
+      },
+      {
+        "columnName": "creditMemo",
+        "columnType": "integer",
+        "columnDescription": "1 if Credit Memo, 0 otherwise"
+      },
+      {
+        "columnName": "paymentOrigin",
+        "columnType": "integer",
+        "columnDescription": "0 = Office Software, 1 = Customer Portal, 2 = Sales App, 3 = Technician App, 4 = ARM (collections)"
+      },
+      {
+        "columnName": "originalPaymentID",
+        "columnType": "integer",
+        "columnDescription": "Original paymentID (for refunds)"
+      },
+      {
+        "columnName": "lastFour",
+        "columnType": "string",
+        "columnDescription": "Last 4 digits of credit card if applicable"
+      },
+      {
+        "columnName": "notes",
+        "columnType": "string",
+        "columnDescription": "Notes from payment processor"
+      },
+      {
+        "columnName": "batchOpened",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "time payment batch was opened"
+      },
+      {
+        "columnName": "batchClosed",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "time payment batch was closed"
+      },
+      {
+        "columnName": "paymentSource",
+        "columnType": "string",
+        "columnDescription": "possible values: 'API','Batch Process','Collections','Customer Portal','Manual','Trigger','Import'"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date of last update"
+      },
+      {
+        "columnName": "transactionID",
+        "columnType": "string",
+        "columnDescription": "transactionID"
+      },
+      {
+        "columnName": "subscriptionID",
+        "columnType": "integer",
+        "columnDescription": "subscriptionID that this payment is limited to"
+      },
+      {
+        "columnName": "cardType",
+        "columnType": "string",
+        "columnDescription": "card type that was recorded for this payment"
+      }
+    ]
+  }

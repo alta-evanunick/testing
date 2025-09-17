@@ -1,0 +1,35 @@
+{
+    "entityName": "genericFlag",
+    "columns": [
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office availability, set to -1 for Global, if not provided Global value is used by default"
+      },
+      {
+        "columnName": "code",
+        "columnType": "string",
+        "columnDescription": "Generic Flag Code"
+      },
+      {
+        "columnName": "description",
+        "columnType": "string",
+        "columnDescription": "Generic Flag description"
+      },
+      {
+        "columnName": "status",
+        "columnType": "integer",
+        "columnDescription": "Generic Flag status; 1 Active, 0 Inactive, if not provided Status Active value is used by default"
+      },
+      {
+        "columnName": "type",
+        "columnType": "string",
+        "columnDescription": "Generic Flag type: Customer => 'CUST', Subscription =>'SUB', Appointment => 'APPT', Equipment => 'EQAS', Region => 'REGN', Affiliate Network => 'AFN'"
+      },
+      {
+        "columnName": "genericFlagID",
+        "columnType": "integer",
+        "columnDescription": "Primary Key"
+      }
+    ]
+  }

@@ -1,0 +1,75 @@
+{
+    "entityName": "disbursementItem",
+    "columns": [
+      {
+        "columnName": "gatewayDisbursementEntryID",
+        "columnType": "integer",
+        "columnDescription": "Gateway Disbursement Entry Unique Identifier"
+      },
+      {
+        "columnName": "gatewayDisbursementID",
+        "columnType": "integer",
+        "columnDescription": "Gateway Disbursement Unique Identifier"
+      },
+      {
+        "columnName": "dateCreated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the disbursement item was created"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the disbursement item was last updated"
+      },
+      {
+        "columnName": "billingFirstName",
+        "columnType": "string",
+        "columnDescription": "Billing first name"
+      },
+      {
+        "columnName": "billingLastName",
+        "columnType": "string",
+        "columnDescription": "Billing last name"
+      },
+      {
+        "columnName": "amount",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Amount of the disbursement item"
+      },
+      {
+        "columnName": "actualAmount",
+        "columnType": "decimal(18,6)",
+        "columnDescription": "Actual amount of the disbursement item"
+      },
+      {
+        "columnName": "description",
+        "columnType": "string",
+        "columnDescription": "Description of the disbursement item"
+      },
+      {
+        "columnName": "isFee",
+        "columnType": "integer",
+        "columnDescription": "fee boolean"
+      },
+      {
+        "columnName": "gatewayEventID",
+        "columnType": "integer",
+        "columnDescription": "Gateway Event Unique Identifier"
+      },
+      {
+        "columnName": "gatewayEventType",
+        "columnType": "string",
+        "columnDescription": "Gateway event type"
+      },
+      {
+        "columnName": "gatewayEventFeeType",
+        "columnType": "string",
+        "columnDescription": "Gateway event fee type"
+      },
+      {
+        "columnName": "gatewayEventDescription",
+        "columnType": "string",
+        "columnDescription": "Gateway event description"
+      }
+    ]
+  }

@@ -1,0 +1,315 @@
+{
+    "entityName": "Appointment",
+    "columns": [
+      {
+        "columnName": "appointmentID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the office this appointment belongs to."
+      },
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the customer this appointment belongs to."
+      },
+      {
+        "columnName": "subscriptionID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the subscription if this appointment belongs to a subscription. If an appointment is attached to a subscription it inherits its pricing as well as other defaults. It also resets the next due date upon completion. Stand alone services or reservices will be a -1."
+      },
+      {
+        "columnName": "subscriptionRegionID",
+        "columnType": "integer",
+        "columnDescription": "RegionID of the subscription if this appointment belongs to a one. For stand alone services or reservices it will be -1."
+      },
+      {
+        "columnName": "routeID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the route that this appointment is assigned to."
+      },
+      {
+        "columnName": "spotID",
+        "columnType": "integer",
+        "columnDescription": "The ID of the spot that this appointment is assigned to. Null indicates an appointment that is flexible on route."
+      },
+      {
+        "columnName": "date",
+        "columnType": "date",
+        "columnDescription": "The date this appointment is scheduled for."
+      },
+      {
+        "columnName": "start",
+        "columnType": "time",
+        "columnDescription": "The beginning of the acceptable time window that the tech may arrive."
+      },
+      {
+        "columnName": "end",
+        "columnType": "time",
+        "columnDescription": "The end of the acceptable time window that the tech may arrive."
+      },
+      {
+        "columnName": "timeWindow",
+        "columnType": "string",
+        "columnDescription": "The classification of the time window for the appointment"
+      },
+      {
+        "columnName": "duration",
+        "columnType": "integer",
+        "columnDescription": "The number of minutes this appointment is scheduled for."
+      },
+      {
+        "columnName": "type",
+        "columnType": "integer",
+        "columnDescription": "The service type ID of this appointment. Reference the endpoint `servicetype` for available options."
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date this appointment was created / added."
+      },
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "The employee ID who created this appointment."
+      },
+      {
+        "columnName": "status",
+        "columnType": "integer",
+        "columnDescription": "The status code of this appointment."
+      },
+      {
+        "columnName": "statusText",
+        "columnType": "string",
+        "columnDescription": "Friendly representation of status"
+      },
+      {
+        "columnName": "callAhead",
+        "columnType": "integer",
+        "columnDescription": "The number of minutes the tech should call ahead to the customer before arriving."
+      },
+      {
+        "columnName": "isInitial",
+        "columnType": "integer",
+        "columnDescription": "Whether or not this is the initial appointment for the associated subscription. 1: yes, 0: no"
+      },
+      {
+        "columnName": "subscriptionPreferredTech",
+        "columnType": "integer",
+        "columnDescription": "The employee ID of the technician set up as preferred for this service subscription, if this appointment belongs to a one. For stand alone services or reservices it will be -1."
+      },
+      {
+        "columnName": "completedBy",
+        "columnType": "integer",
+        "columnDescription": "The employee ID who marked this as serviced -- not necessarily which tech completed the service."
+      },
+      {
+        "columnName": "servicedBy",
+        "columnType": "integer",
+        "columnDescription": "The employee ID of the technician who serviced this appointment"
+      },
+      {
+        "columnName": "dateCompleted",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The date this appointment was marked as serviced (when the action took place and not necessarily the date of the appointment)."
+      },
+      {
+        "columnName": "signedByCustomer",
+        "columnType": "integer",
+        "columnDescription": "Returns 1 if the customer gave a signature when the appointment was completed, 0 otherwise."
+      },
+      {
+        "columnName": "signedByTech",
+        "columnType": "integer",
+        "columnDescription": "Returns 1 if the tech gave a signature when the appointment was completed, 0 otherwise."
+      },
+      {
+        "columnName": "notes",
+        "columnType": "string",
+        "columnDescription": "The notes the technician left for the customer."
+      },
+      {
+        "columnName": "officeNotes",
+        "columnType": "string",
+        "columnDescription": "The notes the technician left ONLY for the office."
+      },
+      {
+        "columnName": "timeIn",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The time the technician checked into the appointment (via user defined input)."
+      },
+      {
+        "columnName": "timeOut",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The time the technician checked out of the appointment (via user-defined input)."
+      },
+      {
+        "columnName": "checkIn",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The time the technician checked into the appointment (via check-in button)."
+      },
+      {
+        "columnName": "checkOut",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "The time the technician checked out of the appointment (via check-out button)."
+      },
+      {
+        "columnName": "windSpeed",
+        "columnType": "integer",
+        "columnDescription": "Miles Per Hour"
+      },
+      {
+        "columnName": "windDirection",
+        "columnType": "string",
+        "columnDescription": "The direction of the wind -- 8 point compass."
+      },
+      {
+        "columnName": "temperature",
+        "columnType": "decimal(5,2)",
+        "columnDescription": "Degrees Farenheight."
+      },
+      {
+        "columnName": "amountCollected",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "The amount the tech reported as being collected."
+      },
+      {
+        "columnName": "paymentMethod",
+        "columnType": "integer",
+        "columnDescription": "The method of payment collected. -1: no payment collected, 0: coupon, 1: cash, 2: check, 3: credit card"
+      },
+      {
+        "columnName": "servicedInterior",
+        "columnType": "integer",
+        "columnDescription": "1: Serviced Interior, 0: Outside only"
+      },
+      {
+        "columnName": "ticketID",
+        "columnType": "integer",
+        "columnDescription": "The ticket / invoice ID associated with the appointment."
+      },
+      {
+        "columnName": "dateCancelled",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Cancelation date"
+      },
+      {
+        "columnName": "additionalTechs",
+        "columnType": "string",
+        "columnDescription": "EmployeeIDs of additional techs on the appointment. Comma separated."
+      },
+      {
+        "columnName": "appointmentCancellationReason",
+        "columnType": "string",
+        "columnDescription": "Appointment cancellation reason, only returned if parameter 'includeCancellationReason' is included with the request."
+      },
+      {
+        "columnName": "cancellationReason",
+        "columnType": "string",
+        "columnDescription": "Appointment cancellation reason, only returned if parameter 'includeCancellationReason' is included with the request."
+      },
+      {
+        "columnName": "cancellationReasonID",
+        "columnType": "integer",
+        "columnDescription": "Appointment cancellation reason ID."
+      },
+      {
+        "columnName": "rescheduleReasonID",
+        "columnType": "integer",
+        "columnDescription": "Appointment reschedule reason ID"
+      },
+      {
+        "columnName": "reserviceReasonID",
+        "columnType": "integer",
+        "columnDescription": "Appointment reservice reason ID"
+      },
+      {
+        "columnName": "unitIDs",
+        "columnType": "array",
+        "columnDescription": "An array of unit IDs associated with this appointment (for multi unit customers)"
+      },
+      {
+        "columnName": "targetPests",
+        "columnType": "integer",
+        "columnDescription": "Requires parameter 'includeTargetPests' to be sent with the request. The ID of a target insect associated with the appointment, these IDs can be found in preferences via Admin > Preferences > Service Related > Target Issues"
+      },
+      {
+        "columnName": "appointmentNotes",
+        "columnType": "string",
+        "columnDescription": "Notes for the appointment."
+      },
+      {
+        "columnName": "doInterior",
+        "columnType": "integer",
+        "columnDescription": "0 - unspecified, 1 - Exterior only, 2 - Interior Needed"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Date the appointment was last changed"
+      },
+      {
+        "columnName": "cancelledBy",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID that cancelled the appointment."
+      },
+      {
+        "columnName": "assignedTech",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID that was assigned to the appointment."
+      },
+      {
+        "columnName": "latIn",
+        "columnType": "float",
+        "columnDescription": "latIn recorded at appointment completion"
+      },
+      {
+        "columnName": "latOut",
+        "columnType": "float",
+        "columnDescription": "latOut recorded at appointment completion"
+      },
+      {
+        "columnName": "longIn",
+        "columnType": "float",
+        "columnDescription": "longIn recorded at appointment completion"
+      },
+      {
+        "columnName": "longOut",
+        "columnType": "float",
+        "columnDescription": "longOut recorded at appointment completion"
+      },
+      {
+        "columnName": "sequence",
+        "columnType": "integer",
+        "columnDescription": "When multiple appointments occupy the same spot this determines which of the appointments will be first."
+      },
+      {
+        "columnName": "lockedBy",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID who locked the appointment, or 0 if it is unlocked"
+      },
+      {
+        "columnName": "originalAppointmentID",
+        "columnType": "integer",
+        "columnDescription": "appointmentID of original appointment that was rescheduled"
+      },
+      {
+        "columnName": "productionValue",
+        "columnType": "number",
+        "columnDescription": "productionValue of the appointment if -1 see ticket if that is -1 see serviceType"
+      },
+      {
+        "columnName": "dueDate",
+        "columnType": "date",
+        "columnDescription": "Due date of the appointment. '0000-00-00' indicates no due date (treat as null)."
+      },
+      {
+        "columnName": "groupID",
+        "columnType": "integer",
+        "columnDescription": ""
+      }
+    ]
+  }

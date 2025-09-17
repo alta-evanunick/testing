@@ -1,0 +1,69 @@
+{
+  "genericFlagAssignment": [
+    {
+      "_entity_type": "genericFlagAssignment",
+      "_extraction_date_range_end": "2025-09-11",
+      "_extraction_date_range_start": "2025-09-10",
+      "_extraction_timestamp": "2025-09-12T00:38:43.853086",
+      "_load_timestamp": "2025-09-11 23:38:46.516",
+      "dateCreated": "2025-09-10 05:21:29",
+      "dateUpdated": "2025-09-10 05:21:29",
+      "entityID": "23322",
+      "genericFlagAssignmentID": "310572",
+      "genericFlagID": "19",
+      "type": "SUBS"
+    },
+    {
+      "_entity_type": "genericFlagAssignment",
+      "_extraction_date_range_end": "2025-09-11",
+      "_extraction_date_range_start": "2025-09-10",
+      "_extraction_timestamp": "2025-09-12T00:38:43.853095",
+      "_load_timestamp": "2025-09-11 23:38:46.516",
+      "dateCreated": "2025-09-10 05:21:29",
+      "dateUpdated": "2025-09-10 05:21:29",
+      "entityID": "23322",
+      "genericFlagAssignmentID": "310573",
+      "genericFlagID": "48",
+      "type": "SUBS"
+    },
+    {
+      "_entity_type": "genericFlagAssignment",
+      "_extraction_date_range_end": "2025-09-11",
+      "_extraction_date_range_start": "2025-09-10",
+      "_extraction_timestamp": "2025-09-12T00:38:43.853097",
+      "_load_timestamp": "2025-09-11 23:38:46.516",
+      "dateCreated": "2025-09-10 05:21:29",
+      "dateUpdated": "2025-09-10 05:21:29",
+      "entityID": "23322",
+      "genericFlagAssignmentID": "310574",
+      "genericFlagID": "22",
+      "type": "SUBS"
+    },
+    {
+      "_entity_type": "genericFlagAssignment",
+      "_extraction_date_range_end": "2025-09-11",
+      "_extraction_date_range_start": "2025-09-10",
+      "_extraction_timestamp": "2025-09-12T00:38:43.853099",
+      "_load_timestamp": "2025-09-11 23:38:46.516",
+      "dateCreated": "2025-09-10 05:21:30",
+      "dateUpdated": "2025-09-10 05:21:30",
+      "entityID": "91848",
+      "genericFlagAssignmentID": "310575",
+      "genericFlagID": "73",
+      "type": "CUST"
+    },
+    {
+      "_entity_type": "genericFlagAssignment",
+      "_extraction_date_range_end": "2025-09-11",
+      "_extraction_date_range_start": "2025-09-10",
+      "_extraction_timestamp": "2025-09-12T00:38:43.853100",
+      "_load_timestamp": "2025-09-11 23:38:46.516",
+      "dateCreated": "2025-09-10 05:21:30",
+      "dateUpdated": "2025-09-10 05:21:30",
+      "entityID": "91848",
+      "genericFlagAssignmentID": "310576",
+      "genericFlagID": "20",
+      "type": "CUST"
+    }
+  ]
+}

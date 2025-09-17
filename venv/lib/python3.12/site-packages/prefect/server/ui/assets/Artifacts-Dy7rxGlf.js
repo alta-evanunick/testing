@@ -1,0 +1,2 @@
+import{d as o,j as r,c,o as n,k as a,l as e,n as t,aP as _,aQ as f}from"./index-lpMZ-Mxi.js";import{u as l}from"./usePageTitle-lR93gd3J.js";const C=o({__name:"Artifacts",setup(p){return l("Artifacts"),(u,i)=>{const s=r("p-layout-default");return n(),c(s,{class:"artifacts"},{header:a(()=>[e(t(f))]),default:a(()=>[e(t(_))]),_:1})}}});export{C as default};
+//# sourceMappingURL=Artifacts-Dy7rxGlf.js.map

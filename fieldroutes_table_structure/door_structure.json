@@ -1,0 +1,95 @@
+{
+    "entityName": "door",
+    "columns": [
+      {
+        "columnName": "doorID",
+        "columnType": "integer",
+        "columnDescription": "Door ID"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office ID"
+      },
+      {
+        "columnName": "lat",
+        "columnType": "number",
+        "columnDescription": "Latitude coordinate"
+      },
+      {
+        "columnName": "lng",
+        "columnType": "number",
+        "columnDescription": "Longitude coordinate"
+      },
+      {
+        "columnName": "timeCreated",
+        "columnType": "string",
+        "columnDescription": "Time when the door record was created"
+      },
+      {
+        "columnName": "employeeID",
+        "columnType": "integer",
+        "columnDescription": "Employee ID"
+      },
+      {
+        "columnName": "name",
+        "columnType": "string",
+        "columnDescription": "Name associated with the door"
+      },
+      {
+        "columnName": "address",
+        "columnType": "string",
+        "columnDescription": "Street address of the door location"
+      },
+      {
+        "columnName": "city",
+        "columnType": "string",
+        "columnDescription": "City where the door is located"
+      },
+      {
+        "columnName": "state",
+        "columnType": "string",
+        "columnDescription": "State where the door is located"
+      },
+      {
+        "columnName": "zip",
+        "columnType": "string",
+        "columnDescription": "ZIP/postal code for the door location"
+      },
+      {
+        "columnName": "phone",
+        "columnType": "string",
+        "columnDescription": "Phone number associated with the door"
+      },
+      {
+        "columnName": "status",
+        "columnType": "integer",
+        "columnDescription": "Door Contact Status (Status 0 - Not Home, Status 1 - Call Back, Status 2 - Gave Pitch, Status 3 - Made Sale, Status 4 - Not Interested, Status 5 - Never Knock)"
+      },
+      {
+        "columnName": "notes",
+        "columnType": "string",
+        "columnDescription": "Notes associated with the door record"
+      },
+      {
+        "columnName": "email",
+        "columnType": "string",
+        "columnDescription": "Email address associated with the door"
+      },
+      {
+        "columnName": "callbackTime",
+        "columnType": "string",
+        "columnDescription": "Scheduled callback time"
+      },
+      {
+        "columnName": "knockCounter",
+        "columnType": "integer",
+        "columnDescription": "Number of times the door has been knocked"
+      },
+      {
+        "columnName": "countryID",
+        "columnType": "string",
+        "columnDescription": "Country ID for the door location"
+      }
+    ]
+  }

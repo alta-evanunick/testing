@@ -1,0 +1,25 @@
+{
+  "entityName": "cancellationReason",
+  "columns": [
+    {
+      "columnName": "reasonID",
+      "columnType": "integer",
+      "columnDescription": "Cancellation Reason Unique Identifier"
+    },
+    {
+      "columnName": "officeID",
+      "columnType": "integer",
+      "columnDescription": "Office Unique Identifier (-1 indicates a global reason)"
+    },
+    {
+      "columnName": "visible",
+      "columnType": "integer",
+      "columnDescription": "Used by the FieldRoutes application to hide/show reasons from staff"
+    },
+    {
+      "columnName": "reason",
+      "columnType": "string",
+      "columnDescription": "Description of the cancellation reason"
+    }
+  ]
+}

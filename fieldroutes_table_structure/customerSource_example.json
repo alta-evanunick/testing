@@ -1,0 +1,64 @@
+{
+    "customerSource": [
+        {
+            "_entity_type": "customerSource",
+            "_extraction_date_range_end": "2024-01-31",
+            "_extraction_date_range_start": "2024-01-01",
+            "_extraction_timestamp": "2025-09-12T00:08:52.741158",
+            "dealsSource": "0",
+            "officeID": "-1",
+            "salesRoutesDefault": "0",
+            "source": "DOOR2DOOR",
+            "sourceID": "123",
+            "visible": "1"
+        },
+        {
+            "_entity_type": "customerSource",
+            "_extraction_date_range_end": "2024-01-31",
+            "_extraction_date_range_start": "2024-01-01",
+            "_extraction_timestamp": "2025-09-12T00:08:52.741167",
+            "dealsSource": "0",
+            "officeID": "-1",
+            "salesRoutesDefault": "0",
+            "source": "Technician",
+            "sourceID": "124",
+            "visible": "1"
+        },
+        {
+            "_entity_type": "customerSource",
+            "_extraction_date_range_end": "2024-01-31",
+            "_extraction_date_range_start": "2024-01-01",
+            "_extraction_timestamp": "2025-09-12T00:08:52.741170",
+            "dealsSource": "0",
+            "officeID": "-1",
+            "salesRoutesDefault": "0",
+            "source": "Customer referral",
+            "sourceID": "125",
+            "visible": "1"
+        },
+        {
+            "_entity_type": "customerSource",
+            "_extraction_date_range_end": "2024-01-31",
+            "_extraction_date_range_start": "2024-01-01",
+            "_extraction_timestamp": "2025-09-12T00:08:52.741172",
+            "dealsSource": "0",
+            "officeID": "-1",
+            "salesRoutesDefault": "0",
+            "source": "Direct Mail",
+            "sourceID": "126",
+            "visible": "0"
+        },
+        {
+            "_entity_type": "customerSource",
+            "_extraction_date_range_end": "2024-01-31",
+            "_extraction_date_range_start": "2024-01-01",
+            "_extraction_timestamp": "2025-09-12T00:08:52.741174",
+            "dealsSource": "0",
+            "officeID": "-1",
+            "salesRoutesDefault": "0",
+            "source": "Webform",
+            "sourceID": "127",
+            "visible": "1"
+        }
+    ]
+}

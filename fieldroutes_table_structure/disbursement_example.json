@@ -1,0 +1,14 @@
+{
+    "disbursement": [
+        {
+        "_entity_type": "disbursement",
+        "_extraction_date_range_end": "2025-09-11",
+        "_extraction_date_range_start": "2025-09-10",
+        "_extraction_timestamp": "2025-09-12T00:11:00.166386",
+        "amount": "95729.59",
+        "dateCreated": "2025-09-10 22:00:17",
+        "dateUpdated": "2025-09-10 22:00:17",
+        "gatewayDisbursementID": "693"
+        }
+    ]
+}

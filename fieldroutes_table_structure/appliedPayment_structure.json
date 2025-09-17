@@ -1,0 +1,55 @@
+{
+  "entityName": "appliedPayment",
+  "columns": [
+    {
+      "columnName": "appliedPaymentID",
+      "columnType": "integer",
+      "columnDescription": "Applied Payment Unique Identifier"
+    },
+    {
+      "columnName": "officeID",
+      "columnType": "integer",
+      "columnDescription": "Office Unique Identifier"
+    },
+    {
+      "columnName": "paymentID",
+      "columnType": "integer",
+      "columnDescription": "Payment Unique Identifier"
+    },
+    {
+      "columnName": "ticketID",
+      "columnType": "integer",
+      "columnDescription": "Ticket Unique Identifier"
+    },
+    {
+      "columnName": "customerID",
+      "columnType": "integer",
+      "columnDescription": "Customer Unique Identifier"
+    },
+    {
+      "columnName": "dateApplied",
+      "columnType": "timestamp_ntz",
+      "columnDescription": "Payment date"
+    },
+    {
+      "columnName": "appliedBy",
+      "columnType": "integer",
+      "columnDescription": "Employee Unique Identifier (may be -1 for system-applied records)"
+    },
+    {
+      "columnName": "appliedAmount",
+      "columnType": "decimal(18,2)",
+      "columnDescription": "Amount of the payment that was used"
+    },
+    {
+      "columnName": "taxCollected",
+      "columnType": "decimal(18,2)",
+      "columnDescription": "Amount of tax that was collected"
+    },
+    {
+      "columnName": "dateUpdated",
+      "columnType": "timestamp_ntz",
+      "columnDescription": "Date of last update."
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+import{d as r,j as s,c as n,o as l,k as e,l as o,n as a,c$ as c,d0 as u}from"./index-lpMZ-Mxi.js";import{u as _}from"./usePageTitle-lR93gd3J.js";const k=r({__name:"WorkPoolCreate",setup(p){return _("Create Work Pool"),(d,f)=>{const t=s("p-layout-default");return l(),n(t,null,{header:e(()=>[o(a(u))]),default:e(()=>[o(a(c))]),_:1})}}});export{k as default};
+//# sourceMappingURL=WorkPoolCreate-Br1rqKtY.js.map

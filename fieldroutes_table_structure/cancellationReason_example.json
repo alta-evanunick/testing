@@ -1,0 +1,64 @@
+{
+  "cancellationReason": [
+    {
+      "_entity_type": "cancellationReason",
+      "_extraction_date_range_end": "2024-01-31",
+      "_extraction_date_range_start": "2024-01-01",
+      "_extraction_timestamp": "2025-09-12T00:06:18.696172",
+      "_load_timestamp": "2025-09-11 23:06:21.981",
+      "officeID": "-1",
+      "reason": "Bankruptcy",
+      "reasonID": "1",
+      "systemReserved": "0",
+      "visible": "0"
+    },
+    {
+      "_entity_type": "cancellationReason",
+      "_extraction_date_range_end": "2024-01-31",
+      "_extraction_date_range_start": "2024-01-01",
+      "_extraction_timestamp": "2025-09-12T00:06:18.696186",
+      "_load_timestamp": "2025-09-11 23:06:21.981",
+      "officeID": "-1",
+      "reason": "Contract expired",
+      "reasonID": "2",
+      "systemReserved": "0",
+      "visible": "0"
+    },
+    {
+      "_entity_type": "cancellationReason",
+      "_extraction_date_range_end": "2024-01-31",
+      "_extraction_date_range_start": "2024-01-01",
+      "_extraction_timestamp": "2025-09-12T00:06:18.696190",
+      "_load_timestamp": "2025-09-11 23:06:21.981",
+      "officeID": "-1",
+      "reason": "Only use this if other reasons don't fit",
+      "reasonID": "3",
+      "systemReserved": "0",
+      "visible": "0"
+    },
+    {
+      "_entity_type": "cancellationReason",
+      "_extraction_date_range_end": "2024-01-31",
+      "_extraction_date_range_start": "2024-01-01",
+      "_extraction_timestamp": "2025-09-12T00:06:18.696193",
+      "_load_timestamp": "2025-09-11 23:06:21.981",
+      "officeID": "-1",
+      "reason": "Cxl team attempting contact",
+      "reasonID": "4",
+      "systemReserved": "0",
+      "visible": "1"
+    },
+    {
+      "_entity_type": "cancellationReason",
+      "_extraction_date_range_end": "2024-01-31",
+      "_extraction_date_range_start": "2024-01-01",
+      "_extraction_timestamp": "2025-09-12T00:06:18.696196",
+      "_load_timestamp": "2025-09-11 23:06:21.981",
+      "officeID": "-1",
+      "reason": "Price Increase",
+      "reasonID": "5",
+      "systemReserved": "0",
+      "visible": "1"
+    }
+  ]
+}

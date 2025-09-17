@@ -1,0 +1,95 @@
+{
+    "entityName": "task",
+    "columns": [
+      {
+        "columnName": "taskIDs",
+        "columnType": "integer",
+        "columnDescription": "Primary key"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "officeID of the task"
+      },
+      {
+        "columnName": "customerID",
+        "columnType": "integer",
+        "columnDescription": "customerID the task is related to"
+      },
+      {
+        "columnName": "addedBy",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID who created the task"
+      },
+      {
+        "columnName": "assignedTo",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID the task is assigned to"
+      },
+      {
+        "columnName": "completedBy",
+        "columnType": "integer",
+        "columnDescription": "EmployeeID who completed the task"
+      },
+      {
+        "columnName": "type",
+        "columnType": "integer",
+        "columnDescription": "Type of task 0: Alert, 1: Task"
+      },
+      {
+        "columnName": "dueDate",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Time the task or alert is due."
+      },
+      {
+        "columnName": "dateAdded",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Time the task or alert was added."
+      },
+      {
+        "columnName": "dateCompleted",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Time the task was completed"
+      },
+      {
+        "columnName": "category",
+        "columnType": "integer",
+        "columnDescription": "Category ID of the task"
+      },
+      {
+        "columnName": "categoryDescription",
+        "columnType": "string",
+        "columnDescription": "Category text of the task"
+      },
+      {
+        "columnName": "task",
+        "columnType": "string",
+        "columnDescription": "Text description of the task."
+      },
+      {
+        "columnName": "completionNotes",
+        "columnType": "string",
+        "columnDescription": "Completion notes for the task"
+      },
+      {
+        "columnName": "referenceID",
+        "columnType": "integer",
+        "columnDescription": "ReferenceID for the task (e.g. subscriptionID that it relates to)"
+      },
+      {
+        "columnName": "phone",
+        "columnType": "string",
+        "columnDescription": "Phone number associated with the task"
+      },
+      {
+        "columnName": "dateUpdated",
+        "columnType": "timestamp_ntz",
+        "columnDescription": "Time the task was last updated."
+      },
+      {
+        "columnName": "status",
+        "columnType": "string",
+        "columnDescription": "Status of the task (0:Pending, 1:Completed, 2:In Use, 3:Urgent)"
+      }
+    ]
+  }

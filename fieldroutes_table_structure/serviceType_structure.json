@@ -1,0 +1,110 @@
+{
+    "entityName": "serviceType",
+    "columns": [
+      {
+        "columnName": "typeID",
+        "columnType": "integer",
+        "columnDescription": "Unique Identifier"
+      },
+      {
+        "columnName": "officeID",
+        "columnType": "integer",
+        "columnDescription": "Office ID this service type belongs to, it will be -1 if it is a Global service type"
+      },
+      {
+        "columnName": "description",
+        "columnType": "string",
+        "columnDescription": "Service type description"
+      },
+      {
+        "columnName": "frequency",
+        "columnType": "integer",
+        "columnDescription": "Service Type Frequency (-1 when it is As need, 0 when it is One Time, -3 when it is Custom Schedule)"
+      },
+      {
+        "columnName": "defaultCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Service type default charge"
+      },
+      {
+        "columnName": "category",
+        "columnType": "string",
+        "columnDescription": "Service type category"
+      },
+      {
+        "columnName": "reservice",
+        "columnType": "integer",
+        "columnDescription": "Service is a reservice type"
+      },
+      {
+        "columnName": "defaultLength",
+        "columnType": "integer",
+        "columnDescription": "Default appointment duration in minutes"
+      },
+      {
+        "columnName": "defaultInitialCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Service defaultInitialCharge. If this is not set, the office default initial quote is sent instead."
+      },
+      {
+        "columnName": "initialID",
+        "columnType": "integer",
+        "columnDescription": "Initial service type, or 0 if one is not set"
+      },
+      {
+        "columnName": "minimumRecurringCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Minimum recurring charge for subscriptions"
+      },
+      {
+        "columnName": "minimumInitialCharge",
+        "columnType": "decimal(18,2)",
+        "columnDescription": "Minimum initial charge for subscriptions."
+      },
+      {
+        "columnName": "regularService",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the service type is marked as a regular service"
+      },
+      {
+        "columnName": "initial",
+        "columnType": "integer",
+        "columnDescription": "Set as 1 if the service type is marked as an initial service"
+      },
+      {
+        "columnName": "seasonStart",
+        "columnType": "date",
+        "columnDescription": "Season Start Date for this service ('0000-00-00' in RAW indicates none)"
+      },
+      {
+        "columnName": "seasonEnd",
+        "columnType": "date",
+        "columnDescription": "Season End Date for this service ('0000-00-00' in RAW indicates none)"
+      },
+      {
+        "columnName": "glAccountID",
+        "columnType": "integer",
+        "columnDescription": "glAccountID of the service"
+      },
+      {
+        "columnName": "sentricon",
+        "columnType": "integer",
+        "columnDescription": "Sentricon service type (reports to Sentricon Web Services when completed)"
+      },
+      {
+        "columnName": "visible",
+        "columnType": "integer",
+        "columnDescription": "1 if visible, 0 if hidden"
+      },
+      {
+        "columnName": "defaultFollowupDelay",
+        "columnType": "integer",
+        "columnDescription": "Default followup delay for service type"
+      },
+      {
+        "columnName": "salesVisible",
+        "columnType": "integer",
+        "columnDescription": "1 if visible, 0 if hidden."
+      }
+    ]
+  }
